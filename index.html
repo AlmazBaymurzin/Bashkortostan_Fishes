@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Рыбы Башкортостана — полный справочник с фото</title>
+    <meta name="description" content="Все виды рыб Республики Башкортостан: описание, места обитания, фото, интересные факты. Справочник для рыбаков и туристов." />
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- Подключаем шрифт для красоты -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+    <!-- ===== ШАПКА ===== -->
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <span class="logo-icon">🐟</span>
+                    <span class="logo-text">Рыбы <span class="logo-accent">Башкортостана</span></span>
+                    <span class="logo-badge" id="fishCounter">25 видов</span>
+                </div>
+                <div class="header-controls">
+                    <div class="search-wrapper">
+                        <input type="text" id="searchInput" placeholder="Найти рыбу..." class="search-input" />
+                        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== ПРОМО-БАННЕР ===== -->
+    <section class="promo-banner">
+        <div class="container">
+            <div class="promo-content">
+                <div class="promo-text">
+                    <span class="promo-tag">📖 Справочник</span>
+                    <h2>Все рыбы Республики Башкортостан</h2>
+                    <p>25 видов с фотографиями, описаниями и точными местами обитания. Для рыбаков, туристов и всех, кто любит природу.</p>
+                    <div class="promo-stats">
+                        <span>🏞 3 крупных водоема</span>
+                        <span>🎣 15 промысловых видов</span>
+                        <span>⚠️ 5 видов в Красной книге</span>
+                    </div>
+                </div>
+                <div class="promo-image">
+                    <img src="img/promo-fish.jpg" alt="Рыбы Башкортостана" loading="lazy" />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== КАТЕГОРИИ-ФИЛЬТРЫ (ИКОНКИ) ===== -->
+    <section class="categories">
+        <div class="container">
+            <div class="categories-grid">
+                <button class="category-btn active" data-filter="all">🌊 Все</button>
+                <button class="category-btn" data-filter="promyslovaya">🎣 Промысловые</button>
+                <button class="category-btn" data-filter="red_book">⚠️ Красная книга</button>
+                <button class="category-btn" data-filter="predator">🦈 Хищные</button>
+                <button class="category-btn" data-filter="peaceful">🐟 Мирные</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== БЛОК "СЛУЧАЙНЫЙ ФАКТ" ===== -->
+    <section class="fact-block">
+        <div class="container">
+            <div class="fact-card">
+                <span class="fact-emoji">💡</span>
+                <div class="fact-text" id="randomFact">Загрузка интересного факта...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== ЛЕНТА КАРТОЧЕК ===== -->
+    <main class="main-content">
+        <div class="container">
+            <!-- Большая карточка (главная) -->
+            <div id="featuredCard" class="featured-card-wrapper"></div>
+            
+            <!-- Сетка карточек -->
+            <div class="section-header">
+                <h3>Все виды рыб</h3>
+                <span class="section-count" id="resultCount">25 видов</span>
+            </div>
+            <div class="fish-grid" id="fishGrid">
+                <!-- Сюда будут вставляться карточки -->
+            </div>
+            
+            <!-- Кнопка "Показать еще" (для будущего расширения) -->
+            <div class="load-more-wrapper">
+                <button id="loadMoreBtn" class="load-more-btn" style="display:none;">Показать еще</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- ===== ПОДВАЛ ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-info">
+                    <p>🐟 Справочник рыб Республики Башкортостан</p>
+                    <p class="footer-small">Данные основаны на открытых источниках и Красной книге РБ</p>
+                </div>
+                <div class="footer-links">
+                    <a href="about.html">О проекте</a>
+                    <a href="mailto:info@fish-bashkortostan.ru">Контакты</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== СКРИПТЫ ===== -->
+    <script src="js/app.js"></script>
+</body>
+</html>
