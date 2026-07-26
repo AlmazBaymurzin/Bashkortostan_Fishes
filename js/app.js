@@ -52,7 +52,10 @@ function showRandomFact() {
         'Окунь — одна из самых умных рыб: он запоминает опасные места и избегает их.',
         'Карась способен выживать в водоемах, где почти нет кислорода, зарываясь в ил.',
         'Павловское водохранилище славится трофейными лещами весом до 6 кг.',
-        'Хариус водится только в самых чистых и холодных реках востока республики.'
+        'Хариус водится только в самых чистых и холодных реках востока республики.',
+        'Ротан-головешка — инвазивный вид, случайно завезенный в Башкортостан.',
+        'Налим — единственная тресковая рыба, обитающая в пресных водах республики.',
+        'Русский осетр встречается в Башкортостане единичными экземплярами.'
     ];
     const random = facts[Math.floor(Math.random() * facts.length)];
     if (factText) factText.textContent = random;
@@ -62,7 +65,7 @@ function showRandomFact() {
 function renderFeatured() {
     if (!featuredWrapper || allFishes.length === 0) return;
     
-    // Берем первую рыбу или самую популярную (можно назначить позже)
+    // Берем первую рыбу из списка (щуку) как главную
     const fish = allFishes[0];
     
     const statusMap = {
@@ -76,7 +79,7 @@ function renderFeatured() {
     
     featuredWrapper.innerHTML = `
         <a href="fish.html?id=${fish.id}" class="featured-card">
-            <img src="${fish.thumb}" alt="${fish.name}" loading="lazy" />
+            <img src="${fish.thumb}" alt="${fish.name}" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
             <div class="featured-card-content">
                 <div>
                     <span class="tag ${statusClass}">${statusLabel}</span>
@@ -97,7 +100,6 @@ function renderCards(fishes) {
         return;
     }
     
-    // Добавляем анимацию появления с задержкой
     grid.innerHTML = '';
     fishes.forEach((fish, index) => {
         const card = document.createElement('a');
@@ -115,7 +117,7 @@ function renderCards(fishes) {
                          fish.status === 'promyslovaya' ? 'tag-promyslovaya' : '';
         
         card.innerHTML = `
-            <img src="${fish.thumb}" alt="${fish.name}" class="fish-card-img" loading="lazy" />
+            <img src="${fish.thumb}" alt="${fish.name}" class="fish-card-img" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
             <div class="fish-card-content">
                 <div class="fish-card-title">${fish.name}</div>
                 <div class="fish-card-latin">${fish.latin}</div>
@@ -134,7 +136,10 @@ function renderCards(fishes) {
 
 // ===== ФИЛЬТРЫ =====
 function applyFilters(resetPage = true) {
-    if (resetPage) currentPage = 0;
+    if (resetPage) {
+        currentPage = 0;
+        grid.innerHTML = ''; // Очищаем перед новым поиском
+    }
     
     const query = searchInput.value.toLowerCase().trim();
     const activeCategory = document.querySelector('.category-btn.active');
@@ -168,7 +173,7 @@ function applyFilters(resetPage = true) {
 
 function updateLoadMore() {
     if (loadMoreBtn) {
-        const shown = currentPage * PER_PAGE + PER_PAGE;
+        const shown = (currentPage + 1) * PER_PAGE;
         if (shown < filteredFishes.length) {
             loadMoreBtn.style.display = 'inline-block';
             loadMoreBtn.textContent = `Показать еще (${filteredFishes.length - shown} осталось)`;
@@ -183,6 +188,7 @@ function loadMore() {
     const start = currentPage * PER_PAGE;
     const end = start + PER_PAGE;
     const newFishes = filteredFishes.slice(start, end);
+    
     // Добавляем новые карточки в конец сетки
     newFishes.forEach((fish, index) => {
         const card = document.createElement('a');
@@ -200,7 +206,7 @@ function loadMore() {
                          fish.status === 'promyslovaya' ? 'tag-promyslovaya' : '';
         
         card.innerHTML = `
-            <img src="${fish.thumb}" alt="${fish.name}" class="fish-card-img" loading="lazy" />
+            <img src="${fish.thumb}" alt="${fish.name}" class="fish-card-img" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
             <div class="fish-card-content">
                 <div class="fish-card-title">${fish.name}</div>
                 <div class="fish-card-latin">${fish.latin}</div>
@@ -220,8 +226,12 @@ function loadMore() {
 
 // ===== СОБЫТИЯ =====
 function setupEventListeners() {
-    // Поиск
-    searchInput.addEventListener('input', () => applyFilters(true));
+    // Поиск с задержкой
+    let searchTimeout;
+    searchInput.addEventListener('input', () => {
+        clearTimeout(searchTimeout);
+        searchTimeout = setTimeout(() => applyFilters(true), 300);
+    });
     
     // Категории
     categoryBtns.forEach(btn => {
@@ -239,4 +249,4 @@ function setupEventListeners() {
 }
 
 // ===== ЗАПУСК =====
-loadData();
+document.addEventListener('DOMContentLoaded', loadData);
