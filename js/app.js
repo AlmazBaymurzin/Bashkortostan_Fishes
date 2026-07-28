@@ -1,252 +1,85 @@
-// ===== ГЛОБАЛЬНЫЕ ПЕРЕМЕННЫЕ =====
-let allFishes = [];
-let filteredFishes = [];
-let currentPage = 0;
-const PER_PAGE = 12;
+// js/app.js
+// Скрипт для загрузки и отображения карточек рыб на главной странице
 
-// ===== DOM-ЭЛЕМЕНТЫ =====
-const grid = document.getElementById('fishGrid');
-const featuredWrapper = document.getElementById('featuredCard');
-const searchInput = document.getElementById('searchInput');
-const categoryBtns = document.querySelectorAll('.category-btn');
-const factText = document.getElementById('randomFact');
-const resultCount = document.getElementById('resultCount');
-const loadMoreBtn = document.getElementById('loadMoreBtn');
-const fishCounter = document.getElementById('fishCounter');
+document.addEventListener('DOMContentLoaded', function() {
+    // 1. Находим контейнер, куда будем вставлять карточки
+    const container = document.getElementById('fish-cards');
 
-// ===== ЗАГРУЗКА ДАННЫХ =====
-async function loadData() {
-    try {
-        const response = await fetch('data/fishes.json');
-        const data = await response.json();
-        allFishes = data.fishes;
-        filteredFishes = [...allFishes];
-        
-        // Обновляем счетчик
-        if (fishCounter) fishCounter.textContent = `${allFishes.length} видов`;
-        
-        // Показываем случайный факт
-        showRandomFact();
-        
-        // Показываем главную карточку
-        renderFeatured();
-        
-        // Рендерим карточки
-        renderCards(filteredFishes.slice(0, PER_PAGE));
-        updateLoadMore();
-        
-        // Навешиваем обработчики
-        setupEventListeners();
-    } catch (error) {
-        console.error('Ошибка загрузки данных:', error);
-        grid.innerHTML = '<p style="text-align:center;padding:40px;">⚠️ Не удалось загрузить данные. Попробуйте позже.</p>';
-    }
-}
-
-// ===== СЛУЧАЙНЫЙ ФАКТ =====
-function showRandomFact() {
-    const facts = [
-        'Щука может менять окраску под цвет дна — это маскировка для охоты.',
-        'Самый крупный сом в Башкортостане был выловлен в реке Белой и весил более 80 кг.',
-        'Стерлядь в Башкортостане восстанавливают: за 5 лет выпущено почти 4 миллиона мальков.',
-        'Окунь — одна из самых умных рыб: он запоминает опасные места и избегает их.',
-        'Карась способен выживать в водоемах, где почти нет кислорода, зарываясь в ил.',
-        'Павловское водохранилище славится трофейными лещами весом до 6 кг.',
-        'Хариус водится только в самых чистых и холодных реках востока республики.',
-        'Ротан-головешка — инвазивный вид, случайно завезенный в Башкортостан.',
-        'Налим — единственная тресковая рыба, обитающая в пресных водах республики.',
-        'Русский осетр встречается в Башкортостане единичными экземплярами.'
-    ];
-    const random = facts[Math.floor(Math.random() * facts.length)];
-    if (factText) factText.textContent = random;
-}
-
-// ===== ГЛАВНАЯ КАРТОЧКА =====
-function renderFeatured() {
-    if (!featuredWrapper || allFishes.length === 0) return;
-    
-    // Берем первую рыбу из списка (щуку) как главную
-    const fish = allFishes[0];
-    
-    const statusMap = {
-        'promyslovaya': 'Промысловая',
-        'lyubitelskaya': 'Любительская',
-        'red_book': '⚠️ Красная книга'
-    };
-    const statusLabel = statusMap[fish.status] || fish.status;
-    let statusClass = fish.status === 'red_book' ? 'tag-red' : 
-                     fish.status === 'promyslovaya' ? 'tag-promyslovaya' : '';
-    
-    featuredWrapper.innerHTML = `
-        <a href="fish.html?id=${fish.id}" class="featured-card">
-            <img src="${fish.thumb}" alt="${fish.name}" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
-            <div class="featured-card-content">
-                <div>
-                    <span class="tag ${statusClass}">${statusLabel}</span>
-                    <span class="tag">${fish.family}</span>
-                </div>
-                <div class="featured-card-title">${fish.name}</div>
-                <div class="featured-card-desc">${fish.description || 'Интересный представитель ихтиофауны Башкортостана.'}</div>
-                <div class="featured-card-meta">📍 ${fish.habitats.join(', ')}</div>
-            </div>
-        </a>
-    `;
-}
-
-// ===== ОТРИСОВКА КАРТОЧЕК =====
-function renderCards(fishes) {
-    if (fishes.length === 0) {
-        grid.innerHTML = '<p style="text-align:center;padding:40px;grid-column:1/-1;">😕 Ничего не найдено. Попробуйте изменить фильтры.</p>';
+    // Если контейнера нет на странице — выходим
+    if (!container) {
+        console.warn('Контейнер #fish-cards не найден на странице.');
         return;
     }
-    
-    grid.innerHTML = '';
-    fishes.forEach((fish, index) => {
-        const card = document.createElement('a');
-        card.className = 'fish-card';
-        card.href = `fish.html?id=${fish.id}`;
-        card.style.animationDelay = `${index * 0.05}s`;
-        
-        const statusMap = {
-            'promyslovaya': 'Промысловая',
-            'lyubitelskaya': 'Любительская',
-            'red_book': '⚠️ Красная книга'
-        };
-        const statusLabel = statusMap[fish.status] || fish.status;
-        let statusClass = fish.status === 'red_book' ? 'tag-red' : 
-                         fish.status === 'promyslovaya' ? 'tag-promyslovaya' : '';
-        
-        card.innerHTML = `
-            <img src="${fish.thumb}" alt="${fish.name}" class="fish-card-img" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
-            <div class="fish-card-content">
-                <div class="fish-card-title">${fish.name}</div>
-                <div class="fish-card-latin">${fish.latin}</div>
-                <div class="fish-card-tags">
-                    <span class="tag">${fish.family}</span>
-                    <span class="tag ${statusClass}">${statusLabel}</span>
-                </div>
-                <div class="fish-card-habitats">
-                    <strong>Где водится:</strong> ${fish.habitats.join(', ')}
-                </div>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-}
 
-// ===== ФИЛЬТРЫ =====
-function applyFilters(resetPage = true) {
-    if (resetPage) {
-        currentPage = 0;
-        grid.innerHTML = ''; // Очищаем перед новым поиском
-    }
-    
-    const query = searchInput.value.toLowerCase().trim();
-    const activeCategory = document.querySelector('.category-btn.active');
-    const category = activeCategory ? activeCategory.dataset.filter : 'all';
-    
-    filteredFishes = allFishes.filter(fish => {
-        // Поиск по тексту
-        const matchesSearch = query === '' || 
-            fish.name.toLowerCase().includes(query) ||
-            fish.latin.toLowerCase().includes(query) ||
-            fish.family.toLowerCase().includes(query) ||
-            fish.habitats.some(h => h.toLowerCase().includes(query));
-        
-        // Категория
-        let matchesCategory = true;
-        if (category === 'promyslovaya') matchesCategory = fish.status === 'promyslovaya';
-        else if (category === 'red_book') matchesCategory = fish.status === 'red_book';
-        else if (category === 'predator') matchesCategory = fish.diet === 'хищник';
-        else if (category === 'peaceful') matchesCategory = fish.diet === 'мирная' || fish.diet === 'растительноядная';
-        
-        return matchesSearch && matchesCategory;
-    });
-    
-    // Обновляем счетчик
-    if (resultCount) resultCount.textContent = `${filteredFishes.length} видов`;
-    
-    // Показываем первую порцию
-    renderCards(filteredFishes.slice(0, PER_PAGE));
-    updateLoadMore();
-}
+    // 2. Загружаем данные из JSON-файла
+    fetch('data/fishes.json')
+        .then(response => {
+            if (!response.ok) {
+                throw new Error(`Ошибка загрузки: ${response.status}`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // 3. Извлекаем массив рыб из объекта (ключ "fishes")
+            const fishes = data.fishes;
 
-function updateLoadMore() {
-    if (loadMoreBtn) {
-        const shown = (currentPage + 1) * PER_PAGE;
-        if (shown < filteredFishes.length) {
-            loadMoreBtn.style.display = 'inline-block';
-            loadMoreBtn.textContent = `Показать еще (${filteredFishes.length - shown} осталось)`;
-        } else {
-            loadMoreBtn.style.display = 'none';
-        }
-    }
-}
+            // Проверяем, что данные — это массив
+            if (!Array.isArray(fishes) || fishes.length === 0) {
+                container.innerHTML = '<p class="no-data">🐟 В каталоге пока нет рыб. Загляните позже!</p>';
+                return;
+            }
 
-function loadMore() {
-    currentPage++;
-    const start = currentPage * PER_PAGE;
-    const end = start + PER_PAGE;
-    const newFishes = filteredFishes.slice(start, end);
-    
-    // Добавляем новые карточки в конец сетки
-    newFishes.forEach((fish, index) => {
-        const card = document.createElement('a');
-        card.className = 'fish-card';
-        card.href = `fish.html?id=${fish.id}`;
-        card.style.animationDelay = `${index * 0.05}s`;
-        
-        const statusMap = {
-            'promyslovaya': 'Промысловая',
-            'lyubitelskaya': 'Любительская',
-            'red_book': '⚠️ Красная книга'
-        };
-        const statusLabel = statusMap[fish.status] || fish.status;
-        let statusClass = fish.status === 'red_book' ? 'tag-red' : 
-                         fish.status === 'promyslovaya' ? 'tag-promyslovaya' : '';
-        
-        card.innerHTML = `
-            <img src="${fish.thumb}" alt="${fish.name}" class="fish-card-img" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
-            <div class="fish-card-content">
-                <div class="fish-card-title">${fish.name}</div>
-                <div class="fish-card-latin">${fish.latin}</div>
-                <div class="fish-card-tags">
-                    <span class="tag">${fish.family}</span>
-                    <span class="tag ${statusClass}">${statusLabel}</span>
-                </div>
-                <div class="fish-card-habitats">
-                    <strong>Где водится:</strong> ${fish.habitats.join(', ')}
-                </div>
-            </div>
-        `;
-        grid.appendChild(card);
-    });
-    updateLoadMore();
-}
-
-// ===== СОБЫТИЯ =====
-function setupEventListeners() {
-    // Поиск с задержкой
-    let searchTimeout;
-    searchInput.addEventListener('input', () => {
-        clearTimeout(searchTimeout);
-        searchTimeout = setTimeout(() => applyFilters(true), 300);
-    });
-    
-    // Категории
-    categoryBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            categoryBtns.forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-            applyFilters(true);
+            // 4. Отображаем карточки
+            renderFishCards(fishes, container);
+        })
+        .catch(error => {
+            console.error('Ошибка при загрузке данных:', error);
+            container.innerHTML = '<p class="error-message">⚠️ Не удалось загрузить каталог рыб. Пожалуйста, обновите страницу позже.</p>';
         });
-    });
-    
-    // Кнопка "Показать еще"
-    if (loadMoreBtn) {
-        loadMoreBtn.addEventListener('click', loadMore);
-    }
-}
+});
 
-// ===== ЗАПУСК =====
-document.addEventListener('DOMContentLoaded', loadData);
+/**
+ * Функция для рендеринга карточек рыб
+ * @param {Array} fishes - массив объектов с данными о рыбах
+ * @param {HTMLElement} container - контейнер для карточек
+ */
+function renderFishCards(fishes, container) {
+    // Очищаем контейнер
+    container.innerHTML = '';
+
+    // Создаем HTML для каждой карточки
+    let cardsHTML = '';
+
+    fishes.forEach(fish => {
+        // Проверяем наличие обязательных полей
+        const name = fish.name || 'Без названия';
+        const thumb = fish.thumb || 'img/placeholder.jpg';
+        const habitat = Array.isArray(fish.habitat) ? fish.habitat.join(', ') : 'Информация отсутствует';
+        const statusClass = fish.status && fish.status.includes('краснокнижная') ? 'status-red' : 'status-common';
+
+        // Формируем блок с интересными фактами (показываем первый факт, если есть)
+        let funFactHTML = '';
+        if (Array.isArray(fish.funFacts) && fish.funFacts.length > 0) {
+            funFactHTML = `<div class="fun-fact">⭐ ${fish.funFacts[0]}</div>`;
+        }
+
+        // Строим HTML карточки
+        cardsHTML += `
+            <div class="fish-card" data-id="${fish.id || ''}">
+                <div class="fish-card-image">
+                    <img src="${thumb}" alt="${name}" loading="lazy">
+                </div>
+                <div class="fish-card-content">
+                    <h3 class="fish-name">${name}</h3>
+                    <span class="fish-status ${statusClass}">${fish.status || ''}</span>
+                    <div class="fish-habitat">📍 ${habitat}</div>
+                    ${funFactHTML}
+                    <a href="fish.html?id=${fish.id || ''}" class="fish-link">Подробнее →</a>
+                </div>
+            </div>
+        `;
+    });
+
+    // Вставляем все карточки в контейнер
+    container.innerHTML = cardsHTML;
+}
