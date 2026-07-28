@@ -34,7 +34,7 @@
 
             <!-- Карточка рыбы -->
             <div class="fish-page" id="fishPage">
-                <div style="text-align:center;padding:40px;">Загрузка данных...</div>
+                <div style="text-align:center;padding:40px;">⏳ Загрузка данных...</div>
             </div>
         </div>
     </main>
@@ -66,8 +66,12 @@
         // Загружаем данные и показываем страницу
         async function loadFishPage() {
             const fishId = getFishId();
+            const pageContainer = document.getElementById('fishPage');
+            
+            console.log('🔍 ID рыбы:', fishId);
+
             if (!fishId) {
-                document.getElementById('fishPage').innerHTML = `
+                pageContainer.innerHTML = `
                     <div style="text-align:center;padding:40px;">
                         <h2>⚠️ Рыба не найдена</h2>
                         <p style="color:#7a8a9a;">Пожалуйста, вернитесь на <a href="index.html" style="color:#1a5276;font-weight:600;">главную страницу</a>.</p>
@@ -77,12 +81,24 @@
             }
 
             try {
+                // Пробуем загрузить данные
+                console.log('📥 Загружаем data/fishes.json...');
                 const response = await fetch('data/fishes.json');
+                console.log('📥 Статус ответа:', response.status);
+                
+                if (!response.ok) {
+                    throw new Error(`Ошибка загрузки: ${response.status}`);
+                }
+                
                 const data = await response.json();
+                console.log('📦 Данные получены, ищем рыбу:', fishId);
+                
+                // Ищем нужную рыбу
                 const fish = data.fishes.find(f => f.id === fishId);
 
                 if (!fish) {
-                    document.getElementById('fishPage').innerHTML = `
+                    console.warn('⚠️ Рыба с ID', fishId, 'не найдена');
+                    pageContainer.innerHTML = `
                         <div style="text-align:center;padding:40px;">
                             <h2>⚠️ Рыба не найдена</h2>
                             <p style="color:#7a8a9a;">Вернитесь на <a href="index.html" style="color:#1a5276;font-weight:600;">главную страницу</a>.</p>
@@ -91,45 +107,47 @@
                     return;
                 }
 
+                console.log('🐟 Найдена рыба:', fish.name);
+
                 // Обновляем заголовок страницы
                 document.title = `${fish.name} — Рыбы Башкортостана`;
                 document.getElementById('pageTitle').textContent = `${fish.name} — Рыбы Башкортостана`;
                 document.getElementById('breadcrumbFish').textContent = fish.name;
 
-                // Статус на русском
-                const statusMap = {
-                    'promyslovaya': 'Промысловая',
-                    'lyubitelskaya': 'Любительская',
-                    'red_book': 'Красная книга ⚠️'
-                };
-                const statusLabel = statusMap[fish.status] || fish.status;
-                let statusClass = fish.status === 'red_book' ? 'tag-red' : 
-                                 fish.status === 'promyslovaya' ? 'tag-promyslovaya' : '';
+                // Определяем статус
+                let statusLabel = fish.status || 'Промысловая';
+                let statusClass = 'tag-promyslovaya';
+                if (statusLabel.includes('краснокнижная')) {
+                    statusClass = 'tag-red';
+                    statusLabel = 'Красная книга ⚠️';
+                }
+
+                // Основное фото
+                const mainImage = fish.images && fish.images.length > 0 
+                    ? fish.images[0] 
+                    : fish.thumb || 'img/placeholder.jpg';
 
                 // Строим HTML
-                const page = document.getElementById('fishPage');
-                page.innerHTML = `
+                pageContainer.innerHTML = `
                     <!-- Верхняя часть: фото и информация -->
                     <div class="fish-page-top">
                         <div class="fish-page-image">
-                            <img src="${fish.images && fish.images[0] ? fish.images[0] : fish.thumb}" 
+                            <img src="${mainImage}" 
                                  alt="${fish.name}" 
                                  onerror="this.src='img/placeholder.jpg'" />
                         </div>
                         <div class="fish-page-info">
                             <h1 class="fish-page-name">${fish.name}</h1>
-                            <div class="fish-page-latin">${fish.latin}</div>
+                            <div class="fish-page-latin">${fish.latin || ''}</div>
                             <div class="fish-page-tags">
                                 <span class="tag ${statusClass}">${statusLabel}</span>
-                                <span class="tag">${fish.family}</span>
-                                <span class="tag">${fish.order}</span>
+                                <span class="tag">${fish.family || ''}</span>
                             </div>
-                            <p class="fish-page-desc">${fish.description || 'Описание отсутствует.'}</p>
                             <div class="fish-page-specs">
-                                <div class="spec-item"><span class="spec-label">Размер</span><span class="spec-value">${fish.size}</span></div>
-                                <div class="spec-item"><span class="spec-label">Вес</span><span class="spec-value">${fish.weight}</span></div>
-                                <div class="spec-item"><span class="spec-label">Тип питания</span><span class="spec-value">${fish.diet === 'хищник' ? '🦈 Хищник' : '🐟 Мирная'}</span></div>
-                                <div class="spec-item"><span class="spec-label">Места обитания</span><span class="spec-value">${fish.habitats.join(', ')}</span></div>
+                                <div class="spec-item"><span class="spec-label">Размер</span><span class="spec-value">${fish.size || '—'}</span></div>
+                                <div class="spec-item"><span class="spec-label">Вес</span><span class="spec-value">${fish.weight || '—'}</span></div>
+                                <div class="spec-item"><span class="spec-label">Тип питания</span><span class="spec-value">${fish.diet || '—'}</span></div>
+                                <div class="spec-item"><span class="spec-label">Места обитания</span><span class="spec-value">${Array.isArray(fish.habitat) ? fish.habitat.join(', ') : '—'}</span></div>
                             </div>
                         </div>
                     </div>
@@ -167,11 +185,12 @@
                 `;
 
             } catch (error) {
-                console.error('Ошибка загрузки:', error);
-                document.getElementById('fishPage').innerHTML = `
+                console.error('❌ Ошибка:', error);
+                pageContainer.innerHTML = `
                     <div style="text-align:center;padding:40px;">
                         <h2>⚠️ Ошибка загрузки</h2>
                         <p style="color:#7a8a9a;">Пожалуйста, попробуйте позже.</p>
+                        <p style="color:#999;font-size:14px;margin-top:8px;">${error.message}</p>
                     </div>
                 `;
             }
