@@ -6,10 +6,105 @@
     <title id="pageTitle">Рыбы Башкортостана</title>
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <style>
+        /* Стили для карусели */
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 380px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            background: #e8ecf0;
+        }
+        .carousel-slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.8);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            z-index: 10;
+        }
+        .carousel-btn:hover {
+            background: white;
+        }
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
+        .carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .carousel-dot.active {
+            background: white;
+        }
+        .fish-page-image {
+            flex: 0 0 45%;
+        }
+        @media (max-width: 820px) {
+            .fish-page-top {
+                flex-direction: column;
+            }
+            .fish-page-image {
+                flex: unset;
+            }
+            .carousel-container {
+                height: 280px;
+            }
+        }
+        @media (max-width: 640px) {
+            .carousel-container {
+                height: 220px;
+            }
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+        }
+    </style>
 </head>
 <body>
-
-    <!-- ===== ШАПКА ===== -->
     <header class="header">
         <div class="container">
             <div class="header-inner">
@@ -24,22 +119,17 @@
         </div>
     </header>
 
-    <!-- ===== ОСНОВНОЙ КОНТЕНТ ===== -->
     <main class="main-content">
         <div class="container">
-            <!-- Хлебные крошки -->
             <div class="breadcrumbs">
                 <a href="index.html">Главная</a> / <span id="breadcrumbFish">Рыба</span>
             </div>
-
-            <!-- Карточка рыбы -->
             <div class="fish-page" id="fishPage">
                 <div style="text-align:center;padding:40px;">⏳ Загрузка данных...</div>
             </div>
         </div>
     </main>
 
-    <!-- ===== ПОДВАЛ ===== -->
     <footer class="footer">
         <div class="container">
             <div class="footer-inner">
@@ -55,21 +145,16 @@
         </div>
     </footer>
 
-    <!-- ===== СКРИПТЫ ===== -->
     <script>
-        // Получаем ID рыбы из URL
         function getFishId() {
             const params = new URLSearchParams(window.location.search);
             return params.get('id');
         }
 
-        // Загружаем данные и показываем страницу
         async function loadFishPage() {
             const fishId = getFishId();
             const pageContainer = document.getElementById('fishPage');
             
-            console.log('🔍 ID рыбы:', fishId);
-
             if (!fishId) {
                 pageContainer.innerHTML = `
                     <div style="text-align:center;padding:40px;">
@@ -81,23 +166,12 @@
             }
 
             try {
-                // Пробуем загрузить данные
-                console.log('📥 Загружаем data/fishes.json...');
                 const response = await fetch('data/fishes.json');
-                console.log('📥 Статус ответа:', response.status);
-                
-                if (!response.ok) {
-                    throw new Error(`Ошибка загрузки: ${response.status}`);
-                }
-                
+                if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
                 const data = await response.json();
-                console.log('📦 Данные получены, ищем рыбу:', fishId);
-                
-                // Ищем нужную рыбу
                 const fish = data.fishes.find(f => f.id === fishId);
 
                 if (!fish) {
-                    console.warn('⚠️ Рыба с ID', fishId, 'не найдена');
                     pageContainer.innerHTML = `
                         <div style="text-align:center;padding:40px;">
                             <h2>⚠️ Рыба не найдена</h2>
@@ -107,14 +181,10 @@
                     return;
                 }
 
-                console.log('🐟 Найдена рыба:', fish.name);
-
-                // Обновляем заголовок страницы
                 document.title = `${fish.name} — Рыбы Башкортостана`;
                 document.getElementById('pageTitle').textContent = `${fish.name} — Рыбы Башкортостана`;
                 document.getElementById('breadcrumbFish').textContent = fish.name;
 
-                // Определяем статус
                 let statusLabel = fish.status || 'Промысловая';
                 let statusClass = 'tag-promyslovaya';
                 if (statusLabel.includes('краснокнижная')) {
@@ -122,19 +192,41 @@
                     statusLabel = 'Красная книга ⚠️';
                 }
 
-                // Основное фото
-                const mainImage = fish.images && fish.images.length > 0 
-                    ? fish.images[0] 
-                    : fish.thumb || 'img/placeholder.jpg';
+                // Формируем HTML для карусели
+                let carouselHTML = '';
+                const images = fish.images && fish.images.length > 0 ? fish.images : [fish.thumb || 'img/placeholder.jpg'];
+                
+                if (images.length === 1) {
+                    // Если одна картинка — просто показываем её
+                    carouselHTML = `
+                        <div class="carousel-container" style="background:transparent;box-shadow:none;">
+                            <img src="${images[0]}" alt="${fish.name}" style="width:100%;height:100%;object-fit:cover;border-radius:16px;" onerror="this.src='img/placeholder.jpg'" />
+                        </div>
+                    `;
+                } else {
+                    // Карусель из нескольких фото
+                    carouselHTML = `
+                        <div class="carousel-container" id="carouselContainer">
+                            <div class="carousel-slides" id="carouselSlides">
+                                ${images.map(img => `
+                                    <div class="carousel-slide">
+                                        <img src="${img}" alt="${fish.name}" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
+                            <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
+                            <div class="carousel-dots" id="carouselDots">
+                                ${images.map((_, idx) => `<button class="carousel-dot ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx})"></button>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
 
-                // Строим HTML
                 pageContainer.innerHTML = `
-                    <!-- Верхняя часть: фото и информация -->
                     <div class="fish-page-top">
                         <div class="fish-page-image">
-                            <img src="${mainImage}" 
-                                 alt="${fish.name}" 
-                                 onerror="this.src='img/placeholder.jpg'" />
+                            ${carouselHTML}
                         </div>
                         <div class="fish-page-info">
                             <h1 class="fish-page-name">${fish.name}</h1>
@@ -151,20 +243,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Галерея -->
-                    ${fish.images && fish.images.length > 1 ? `
-                    <div class="fish-gallery">
-                        <h3>📸 Фотографии</h3>
-                        <div class="gallery-grid">
-                            ${fish.images.map(img => `
-                                <img src="${img}" alt="${fish.name}" loading="lazy" onerror="this.style.display='none'" />
-                            `).join('')}
-                        </div>
-                    </div>
-                    ` : ''}
-
-                    <!-- Интересные факты -->
                     ${fish.funFacts && fish.funFacts.length > 0 ? `
                     <div class="fish-facts">
                         <h4>💡 Интересные факты</h4>
@@ -173,8 +251,6 @@
                         </ul>
                     </div>
                     ` : ''}
-
-                    <!-- Кнопка назад -->
                     <div style="margin-top:24px;">
                         <a href="index.html" style="display:inline-block;padding:10px 28px;background:#f0f2f5;border-radius:30px;color:#1a1a1a;font-weight:600;text-decoration:none;transition:background 0.2s;" 
                            onmouseover="this.style.background='#e0e4e8'" 
@@ -183,6 +259,11 @@
                         </a>
                     </div>
                 `;
+
+                // Инициализация карусели, если есть слайды
+                if (images.length > 1) {
+                    initCarousel(images.length);
+                }
 
             } catch (error) {
                 console.error('❌ Ошибка:', error);
@@ -196,7 +277,45 @@
             }
         }
 
-        // Запуск
+        // ========== ЛОГИКА КАРУСЕЛИ ==========
+        let currentSlide = 0;
+        let totalSlides = 0;
+        let slideInterval = null;
+
+        function initCarousel(count) {
+            totalSlides = count;
+            updateCarousel();
+            // Авто-переключение каждые 4 секунды
+            slideInterval = setInterval(() => changeSlide(1), 4000);
+            // Останавливаем при наведении мыши
+            const container = document.getElementById('carouselContainer');
+            container.addEventListener('mouseenter', () => clearInterval(slideInterval));
+            container.addEventListener('mouseleave', () => {
+                slideInterval = setInterval(() => changeSlide(1), 4000);
+            });
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const slidesContainer = document.getElementById('carouselSlides');
+            const dots = document.querySelectorAll('.carousel-dot');
+            if (slidesContainer) {
+                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlide);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', loadFishPage);
     </script>
 </body>
