@@ -1,7 +1,6 @@
 // js/app.js
-// Скрипт для загрузки, отображения и ФИЛЬТРАЦИИ карточек рыб
+// Скрипт для загрузки, отображения, ФИЛЬТРАЦИИ и случайных фактов
 
-// Глобальные переменные для хранения данных
 let allFishes = [];
 let currentFilter = 'all';
 let searchQuery = '';
@@ -10,7 +9,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const container = document.getElementById('fishGrid');
     if (!container) return;
 
-    // Загружаем данные
     fetch('data/fishes.json')
         .then(response => {
             if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
@@ -34,6 +32,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // 4. Обновляем статистику в промо-баннере
             updatePromoStats(allFishes);
+
+            // 5. Показываем случайный факт (НОВОЕ!)
+            showRandomFact(allFishes);
         })
         .catch(error => {
             console.error('Ошибка при загрузке данных:', error);
@@ -46,7 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
 // ==========================================================
 
 function applyFiltersAndRender() {
-    // 1. Сначала фильтруем по поиску (если есть)
     let filtered = allFishes;
     if (searchQuery.trim() !== '') {
         const query = searchQuery.toLowerCase().trim();
@@ -57,7 +57,6 @@ function applyFiltersAndRender() {
         );
     }
 
-    // 2. Затем фильтруем по категории
     if (currentFilter === 'all') {
         // Оставляем все
     } else if (currentFilter === 'promyslovaya') {
@@ -74,13 +73,9 @@ function applyFiltersAndRender() {
         });
     }
 
-    // 3. Рендерим отфильтрованный список
     renderFishCards(filtered, document.getElementById('fishGrid'));
-
-    // 4. Обновляем счётчик
     updateCounter(filtered.length);
 
-    // 5. Обновляем выделение кнопок
     document.querySelectorAll('.category-btn').forEach(btn => {
         btn.classList.toggle('active', btn.dataset.filter === currentFilter);
     });
@@ -95,6 +90,8 @@ function setupFilterButtons() {
         btn.addEventListener('click', function() {
             currentFilter = this.dataset.filter;
             applyFiltersAndRender();
+            // При смене фильтра показываем новый случайный факт
+            showRandomFact(allFishes);
         });
     });
 }
@@ -205,4 +202,33 @@ function updatePromoStats(fishes) {
 
     if (promoEl) promoEl.textContent = `🎣 ${promyslovayaCount} промысловых видов`;
     if (redEl) redEl.textContent = `⚠️ ${redBookCount} видов в Красной книге`;
+}
+
+// ==========================================================
+//  🆕 СЛУЧАЙНЫЙ ФАКТ (ВОССТАНОВЛЕН!)
+// ==========================================================
+
+function showRandomFact(fishes) {
+    const factContainer = document.getElementById('randomFact');
+    if (!factContainer) return;
+
+    // Собираем все факты из всех рыб
+    const allFacts = [];
+    fishes.forEach(fish => {
+        if (Array.isArray(fish.funFacts)) {
+            fish.funFacts.forEach(fact => {
+                allFacts.push(`${fish.name}: ${fact}`);
+            });
+        }
+    });
+
+    // Если фактов нет — выводим заглушку
+    if (allFacts.length === 0) {
+        factContainer.textContent = '🐟 В каталоге пока нет интересных фактов.';
+        return;
+    }
+
+    // Выбираем случайный
+    const randomIndex = Math.floor(Math.random() * allFacts.length);
+    factContainer.textContent = allFacts[randomIndex];
 }
