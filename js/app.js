@@ -1,68 +1,138 @@
 // js/app.js
-// Скрипт для загрузки и отображения карточек рыб на главной странице
+// Скрипт для загрузки, отображения и ФИЛЬТРАЦИИ карточек рыб
+
+// Глобальные переменные для хранения данных
+let allFishes = [];
+let currentFilter = 'all';
+let searchQuery = '';
 
 document.addEventListener('DOMContentLoaded', function() {
-    // 1. Находим контейнер, куда будем вставлять карточки
     const container = document.getElementById('fishGrid');
+    if (!container) return;
 
-    // Если контейнера нет на странице — выходим
-    if (!container) {
-        console.warn('Контейнер #fishGrid не найден на странице.');
-        return;
-    }
-
-    // 2. Загружаем данные из JSON-файла
+    // Загружаем данные
     fetch('data/fishes.json')
         .then(response => {
-            if (!response.ok) {
-                throw new Error(`Ошибка загрузки: ${response.status}`);
-            }
+            if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
             return response.json();
         })
         .then(data => {
-            // 3. Извлекаем массив рыб из объекта (ключ "fishes")
-            const fishes = data.fishes;
-
-            // Проверяем, что данные — это массив
-            if (!Array.isArray(fishes) || fishes.length === 0) {
+            allFishes = data.fishes || [];
+            if (!Array.isArray(allFishes) || allFishes.length === 0) {
                 container.innerHTML = '<p class="no-data">🐟 В каталоге пока нет рыб. Загляните позже!</p>';
                 return;
             }
 
-            // 4. Отображаем карточки
-            renderFishCards(fishes, container);
+            // 1. Первичный рендер
+            applyFiltersAndRender();
 
-            // 5. Обновляем счетчик видов в шапке
-            updateCounter(fishes.length);
+            // 2. Настраиваем обработчики фильтров
+            setupFilterButtons();
 
-            // 6. Показываем случайный факт
-            showRandomFact(fishes);
+            // 3. Настраиваем поиск
+            setupSearch();
+
+            // 4. Обновляем статистику в промо-баннере
+            updatePromoStats(allFishes);
         })
         .catch(error => {
             console.error('Ошибка при загрузке данных:', error);
-            container.innerHTML = '<p class="error-message">⚠️ Не удалось загрузить каталог рыб. Пожалуйста, обновите страницу позже.</p>';
+            container.innerHTML = '<p class="error-message">⚠️ Не удалось загрузить каталог рыб.</p>';
         });
 });
 
-/**
- * Функция для рендеринга карточек рыб
- * @param {Array} fishes - массив объектов с данными о рыбах
- * @param {HTMLElement} container - контейнер для карточек
- */
+// ==========================================================
+//  ЛОГИКА ФИЛЬТРАЦИИ И ПОИСКА
+// ==========================================================
+
+function applyFiltersAndRender() {
+    // 1. Сначала фильтруем по поиску (если есть)
+    let filtered = allFishes;
+    if (searchQuery.trim() !== '') {
+        const query = searchQuery.toLowerCase().trim();
+        filtered = filtered.filter(fish => 
+            fish.name.toLowerCase().includes(query) || 
+            (fish.latin && fish.latin.toLowerCase().includes(query)) ||
+            (fish.family && fish.family.toLowerCase().includes(query))
+        );
+    }
+
+    // 2. Затем фильтруем по категории
+    if (currentFilter === 'all') {
+        // Оставляем все
+    } else if (currentFilter === 'promyslovaya') {
+        filtered = filtered.filter(fish => fish.status && !fish.status.includes('краснокнижная'));
+    } else if (currentFilter === 'red_book') {
+        filtered = filtered.filter(fish => fish.status && fish.status.includes('краснокнижная'));
+    } else if (currentFilter === 'predator') {
+        filtered = filtered.filter(fish => fish.diet && fish.diet.toLowerCase().includes('хищник'));
+    } else if (currentFilter === 'peaceful') {
+        filtered = filtered.filter(fish => {
+            if (!fish.diet) return true;
+            const diet = fish.diet.toLowerCase();
+            return !diet.includes('хищник') && !diet.includes('хищник-');
+        });
+    }
+
+    // 3. Рендерим отфильтрованный список
+    renderFishCards(filtered, document.getElementById('fishGrid'));
+
+    // 4. Обновляем счётчик
+    updateCounter(filtered.length);
+
+    // 5. Обновляем выделение кнопок
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.dataset.filter === currentFilter);
+    });
+}
+
+// ==========================================================
+//  ОБРАБОТЧИКИ
+// ==========================================================
+
+function setupFilterButtons() {
+    document.querySelectorAll('.category-btn').forEach(btn => {
+        btn.addEventListener('click', function() {
+            currentFilter = this.dataset.filter;
+            applyFiltersAndRender();
+        });
+    });
+}
+
+function setupSearch() {
+    const searchInput = document.getElementById('searchInput');
+    if (!searchInput) return;
+
+    searchInput.addEventListener('input', function() {
+        searchQuery = this.value;
+        applyFiltersAndRender();
+    });
+}
+
+// ==========================================================
+//  РЕНДЕРИНГ
+// ==========================================================
+
 function renderFishCards(fishes, container) {
-    // Очищаем контейнер
+    if (!container) return;
     container.innerHTML = '';
 
-    // Создаем HTML для каждой карточки
-    let cardsHTML = '';
+    if (fishes.length === 0) {
+        container.innerHTML = `
+            <div style="text-align:center;padding:40px;color:#7a8a9a;grid-column:1/-1;">
+                <p style="font-size:18px;">😕 Ничего не найдено</p>
+                <p style="font-size:14px;">Попробуйте изменить фильтр или поиск</p>
+            </div>
+        `;
+        return;
+    }
 
+    let cardsHTML = '';
     fishes.forEach((fish, index) => {
-        // Проверяем наличие обязательных полей
         const name = fish.name || 'Без названия';
         const thumb = fish.thumb || 'img/placeholder.jpg';
         const habitat = Array.isArray(fish.habitat) ? fish.habitat.join(', ') : 'Информация отсутствует';
         
-        // Определяем класс статуса
         let statusClass = 'tag-promyslovaya';
         let statusLabel = fish.status || 'Промысловая';
         if (fish.status && fish.status.includes('краснокнижная')) {
@@ -70,16 +140,13 @@ function renderFishCards(fishes, container) {
             statusLabel = 'Красная книга ⚠️';
         }
 
-        // Формируем блок с интересными фактами (показываем первый факт, если есть)
         let funFactHTML = '';
         if (Array.isArray(fish.funFacts) && fish.funFacts.length > 0) {
             funFactHTML = `<div class="fish-card-habitats" style="margin-top:6px;font-size:14px;color:#4a5a6a;">⭐ ${fish.funFacts[0]}</div>`;
         }
 
-        // Задержка анимации для каждой карточки
         const delay = index * 0.05;
 
-        // Строим HTML карточки (используем классы из style.css)
         cardsHTML += `
             <a href="fish.html?id=${fish.id || ''}" class="fish-card" style="animation-delay: ${delay}s; text-decoration: none; color: inherit;">
                 <img src="${thumb}" alt="${name}" class="fish-card-img" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
@@ -99,42 +166,43 @@ function renderFishCards(fishes, container) {
         `;
     });
 
-    // Вставляем все карточки в контейнер
     container.innerHTML = cardsHTML;
 }
 
-/**
- * Обновляет счетчик видов в шапке
- */
 function updateCounter(count) {
     const counter = document.getElementById('fishCounter');
-    if (counter) {
-        counter.textContent = `${count} видов`;
-    }
+    const resultCount = document.getElementById('resultCount');
+    const text = `${count} ${getPlural(count)}`;
+    if (counter) counter.textContent = text;
+    if (resultCount) resultCount.textContent = text;
 }
 
-/**
- * Показывает случайный факт в блоке
- */
-function showRandomFact(fishes) {
-    const factContainer = document.getElementById('randomFact');
-    if (!factContainer) return;
+function getPlural(n) {
+    if (n % 10 === 1 && n % 100 !== 11) return 'вид';
+    if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) return 'вида';
+    return 'видов';
+}
 
-    // Собираем все факты
-    const allFacts = [];
+// ==========================================================
+//  СТАТИСТИКА ДЛЯ ПРОМО-БАННЕРА
+// ==========================================================
+
+function updatePromoStats(fishes) {
+    let promyslovayaCount = 0;
+    let redBookCount = 0;
+
     fishes.forEach(fish => {
-        if (Array.isArray(fish.funFacts)) {
-            fish.funFacts.forEach(fact => {
-                allFacts.push(`${fish.name}: ${fact}`);
-            });
+        const status = fish.status || '';
+        if (status.includes('краснокнижная')) {
+            redBookCount++;
+        } else {
+            promyslovayaCount++;
         }
     });
 
-    if (allFacts.length === 0) {
-        factContainer.textContent = '🐟 В каталоге пока нет интересных фактов.';
-        return;
-    }
+    const promoEl = document.getElementById('statPromyslovaya');
+    const redEl = document.getElementById('statRedBook');
 
-    const randomIndex = Math.floor(Math.random() * allFacts.length);
-    factContainer.textContent = allFacts[randomIndex];
+    if (promoEl) promoEl.textContent = `🎣 ${promyslovayaCount} промысловых видов`;
+    if (redEl) redEl.textContent = `⚠️ ${redBookCount} видов в Красной книге`;
 }
