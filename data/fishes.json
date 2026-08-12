@@ -22,7 +22,9 @@
         "Может охотиться на рыбу размером до половины своего тела"
       ],
       "thumb": "img/thumb/shchuka.webp",
-      "images": ["img/full/shchuka1.webp", "img/full/shchuka2.webp"]
+      "images": ["img/full/shchuka1.webp", "img/full/shchuka2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "okun",
@@ -46,7 +48,9 @@
         "Зимой собирается в крупные стаи до 50-100 особей"
       ],
       "thumb": "img/thumb/okun.webp",
-      "images": ["img/full/okun1.webp", "img/full/okun2.webp"]
+      "images": ["img/full/okun1.webp", "img/full/okun2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "leshh",
@@ -70,7 +74,9 @@
         "Чешуя леща используется в народной медицине"
       ],
       "thumb": "img/full/lesh1.webp",
-      "images": ["img/full/lesh1.webp", "img/full/lesh2.webp"]
+      "images": ["img/full/lesh1.webp", "img/full/lesh2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "sazan",
@@ -94,7 +100,9 @@
         "Осенью залегает в глубокие ямы на зимовку"
       ],
       "thumb": "img/thumb/sazan.webp",
-      "images": ["img/full/sazan1.webp", "img/full/sazan2.webp"]
+      "images": ["img/full/sazan1.webp", "img/full/sazan2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "sudak",
@@ -118,7 +126,9 @@
         "Может достигать веса более 10 кг в крупных водохранилищах"
       ],
       "thumb": "img/thumb/sudak.webp",
-      "images": ["img/full/sudak1.webp", "img/full/sudak2.webp"]
+      "images": ["img/full/sudak1.webp", "img/full/sudak2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "plotva",
@@ -142,7 +152,9 @@
         "В крупных озерах достигает веса до 1,5 кг"
       ],
       "thumb": "img/thumb/plotva.webp",
-      "images": ["img/full/plotva1.webp", "img/full/plotva2.webp"]
+      "images": ["img/full/plotva1.webp", "img/full/plotva2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "karas",
@@ -166,7 +178,9 @@
         "Икра карася токсична для многих хищников — это защитный механизм"
       ],
       "thumb": "img/thumb/karas.webp",
-      "images": ["img/full/karas1.webp", "img/full/karas2.webp"]
+      "images": ["img/full/karas1.webp", "img/full/karas2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "som",
@@ -190,7 +204,9 @@
         "Ведет ночной образ жизни, днем прячется в ямах и под корягами"
       ],
       "thumb": "img/thumb/som.webp",
-      "images": ["img/full/som1.webp", "img/full/som2.webp"]
+      "images": ["img/full/som1.webp", "img/full/som2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "sterlyad",
@@ -214,7 +230,9 @@
         "Дает ценную черную икру, из-за чего страдает от браконьеров"
       ],
       "thumb": "img/thumb/sterlyad.webp",
-      "images": ["img/full/sterlyad1.webp", "img/full/sterlyad2.webp"]
+      "images": ["img/full/sterlyad1.webp", "img/full/sterlyad2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "khabius",
@@ -238,9 +256,10 @@
         "За незаконный вылов грозит уголовная ответственность"
       ],
       "thumb": "img/thumb/khabius.webp",
-      "images": ["img/full/khabius1.webp", "img/full/khabius2.webp"]
+      "images": ["img/full/khabius1.webp", "img/full/khabius2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
-
     {
       "id": "yaz",
       "name": "Язь",
@@ -263,7 +282,9 @@
         "Глаза язя имеют характерный желтоватый ободок"
       ],
       "thumb": "img/thumb/yaz.webp",
-      "images": ["img/full/yaz1.webp", "img/full/yaz2.webp"]
+      "images": ["img/full/yaz1.webp", "img/full/yaz2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "krasnoperka",
@@ -287,7 +308,9 @@
         "Похожа на плотву, но отличается более яркими плавниками"
       ],
       "thumb": "img/thumb/krasnoperka.webp",
-      "images": ["img/full/krasnoperka1.webp", "img/full/krasnoperka2.webp"]
+      "images": ["img/full/krasnoperka1.webp", "img/full/krasnoperka2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "lin",
@@ -311,7 +334,9 @@
         "Чешуя покрыта слизью, что делает его скользким для хищников"
       ],
       "thumb": "img/thumb/lin.webp",
-      "images": ["img/full/lin1.webp", "img/full/lin2.webp"]
+      "images": ["img/full/lin1.webp", "img/full/lin2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0]
     },
     {
       "id": "karp",
@@ -335,7 +360,9 @@
         "Может жить в прудах с низким содержанием кислорода"
       ],
       "thumb": "img/thumb/karp.webp",
-      "images": ["img/full/karp1.webp", "img/full/karp2.webp"]
+      "images": ["img/full/karp1.webp", "img/full/karp2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "pelyad",
@@ -359,7 +386,9 @@
         "Зимой не уходит на глубину, держится подо льдом"
       ],
       "thumb": "img/thumb/pelyad.webp",
-      "images": ["img/full/pelyad1.webp", "img/full/pelyad2.webp"]
+      "images": ["img/full/pelyad1.webp", "img/full/pelyad2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
+      "spawn": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0]
     },
     {
       "id": "beliy_amur",
@@ -383,7 +412,9 @@
         "В Китае белый амур — одна из главных промысловых рыб"
       ],
       "thumb": "img/thumb/beliy_amur.webp",
-      "images": ["img/full/beliy_amur1.webp", "img/full/beliy_amur2.webp"]
+      "images": ["img/full/beliy_amur1.webp", "img/full/beliy_amur2.webp"],
+      "activity": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]
     },
     {
       "id": "tolstolobik",
@@ -407,7 +438,9 @@
         "Широко используется в рыбоводстве для борьбы с цветением воды"
       ],
       "thumb": "img/thumb/tolstolobik.webp",
-      "images": ["img/full/tolstolobik1.webp", "img/full/tolstolobik2.webp"]
+      "images": ["img/full/tolstolobik1.webp", "img/full/tolstolobik2.webp"],
+      "activity": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]
     },
     {
       "id": "zhereh",
@@ -431,7 +464,9 @@
         "Часто охотится в стае, загоняя добычу в мелкую воду"
       ],
       "thumb": "img/thumb/zhereh.webp",
-      "images": ["img/full/zhereh1.webp", "img/full/zhereh2.webp"]
+      "images": ["img/full/zhereh1.webp", "img/full/zhereh2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "yersh",
@@ -455,7 +490,9 @@
         "Зимой собирается в огромные стаи в придонных слоях"
       ],
       "thumb": "img/thumb/yersh.webp",
-      "images": ["img/full/yersh1.webp", "img/full/yersh2.webp"]
+      "images": ["img/full/yersh1.webp", "img/full/yersh2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "ukleya",
@@ -479,7 +516,9 @@
         "Является основной пищей для хищников в водоемах"
       ],
       "thumb": "img/thumb/ukleya.webp",
-      "images": ["img/full/ukleya1.webp", "img/full/ukleya2.webp"]
+      "images": ["img/full/ukleya1.webp", "img/full/ukleya2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "peskar",
@@ -503,7 +542,9 @@
         "Ведет строго придонный образ жизни, редко поднимается к поверхности"
       ],
       "thumb": "img/thumb/peskar.webp",
-      "images": ["img/full/peskar1.webp", "img/full/peskar2.webp"]
+      "images": ["img/full/peskar1.webp", "img/full/peskar2.webp"],
+      "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
+      "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "taimen",
@@ -527,7 +568,9 @@
         "Может мигрировать на сотни километров в поисках нерестилищ"
       ],
       "thumb": "img/thumb/taimen.webp",
-      "images": ["img/full/taimen1.webp", "img/full/taimen2.webp"]
+      "images": ["img/full/taimen1.webp", "img/full/taimen2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "forel",
@@ -551,7 +594,9 @@
         "Нерестится осенью, в отличие от большинства других рыб"
       ],
       "thumb": "img/thumb/forel.webp",
-      "images": ["img/full/forel1.webp", "img/full/forel2.webp"]
+      "images": ["img/full/forel1.webp", "img/full/forel2.webp"],
+      "activity": [0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1],
+      "spawn": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0]
     },
     {
       "id": "osyotr",
@@ -575,7 +620,9 @@
         "Включен в Красную книгу РФ и международный список CITES"
       ],
       "thumb": "img/thumb/osyotr.webp",
-      "images": ["img/full/osyotr1.webp", "img/full/osyotr2.webp"]
+      "images": ["img/full/osyotr1.webp", "img/full/osyotr2.webp"],
+      "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0, 0],
+      "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
     {
       "id": "sig",
@@ -599,7 +646,9 @@
         "В озерах образует локальные популяции (озерные формы)"
       ],
       "thumb": "img/thumb/sig.webp",
-      "images": ["img/full/sig1.webp", "img/full/sig2.webp"]
+      "images": ["img/full/sig1.webp", "img/full/sig2.webp"],
+      "activity": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1],
+      "spawn": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1]
     }
   ]
 }
