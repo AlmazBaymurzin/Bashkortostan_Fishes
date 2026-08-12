@@ -100,7 +100,7 @@
         "Осенью залегает в глубокие ямы на зимовку"
       ],
       "thumb": "img/thumb/sazan.webp",
-      "images": ["img/full/sazan1.webp", "img/full/sazan2.webp"],
+      "images": ["img/full/sazan1.webp", "img/full/sazan2.webp", "img/full/sazan3.webp", "img/full/sazan4.webp"],
       "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
