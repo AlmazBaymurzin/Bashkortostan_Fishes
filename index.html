@@ -7,7 +7,6 @@
     <link rel="icon" href="img/icons/favicon.png" type="image/png" />
     <meta name="description" content="Все виды рыб Республики Башкортостан: описание, места обитания, фото, интересные факты. Справочник для рыбаков и туристов." />
     <link rel="stylesheet" href="css/style.css" />
-    <!-- Подключаем шрифт для красоты -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
 </head>
 <body>
@@ -19,7 +18,7 @@
                 <div class="logo">
                     <span class="logo-icon">🐟</span>
                     <span class="logo-text">Рыбы <span class="logo-accent">Башкортостана</span></span>
-                    <span class="logo-badge" id="fishCounter">25 видов</span>
+                    <span class="logo-badge" id="fishCounter">0 видов</span>
                 </div>
                 <div class="header-controls">
                     <div class="search-wrapper">
@@ -38,11 +37,11 @@
                 <div class="promo-text">
                     <span class="promo-tag">📖 Справочник</span>
                     <h2>Все рыбы Республики Башкортостан</h2>
-                    <p>25 видов с фотографиями, описаниями и точными местами обитания. Для рыбаков, туристов и всех, кто любит природу.</p>
+                    <p>Все виды с фотографиями, описаниями и точными местами обитания. Для рыбаков, туристов и всех, кто любит природу.</p>
                     <div class="promo-stats">
                         <span>🏞 3 крупных водоема</span>
-                        <span>🎣 15 промысловых видов</span>
-                        <span>⚠️ 5 видов в Красной книге</span>
+                        <span id="statPromyslovaya">🎣 0 промысловых видов</span>
+                        <span id="statRedBook">⚠️ 0 видов в Красной книге</span>
                     </div>
                 </div>
                 <div class="promo-image">
@@ -84,7 +83,7 @@
             <!-- Сетка карточек -->
             <div class="section-header">
                 <h3>Все виды рыб</h3>
-                <span class="section-count" id="resultCount">25 видов</span>
+                <span class="section-count" id="resultCount">0 видов</span>
             </div>
             <div class="fish-grid" id="fishGrid">
                 <!-- Сюда будут вставляться карточки -->
