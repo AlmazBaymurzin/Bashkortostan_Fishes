@@ -126,7 +126,7 @@
         "Может достигать веса более 10 кг в крупных водохранилищах"
       ],
       "thumb": "img/thumb/sudak.webp",
-      "images": ["img/full/sudak1.webp", "img/full/sudak2.webp"],
+      "images": ["img/full/sudak1.webp", "img/full/sudak2.webp", "img/full/sudak3.webp"],
       "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
