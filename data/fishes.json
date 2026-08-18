@@ -178,7 +178,7 @@
         "Икра карася токсична для многих хищников — это защитный механизм"
       ],
       "thumb": "img/thumb/karas.webp",
-      "images": ["img/full/karas1.webp", "img/full/karas2.webp"],
+      "images": ["img/full/karas1.webp", "img/full/karas2.webp", "img/full/karas3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
