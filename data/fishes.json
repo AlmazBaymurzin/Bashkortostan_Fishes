@@ -22,7 +22,7 @@
         "Может охотиться на рыбу размером до половины своего тела"
       ],
       "thumb": "img/thumb/shchuka.webp",
-      "images": ["img/full/shchuka1.webp", "img/full/shchuka2.webp"],
+      "images": ["img/full/shchuka1.webp", "img/full/shchuka2.webp", "img/full/shchuka2.webp"],
       "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
@@ -204,7 +204,7 @@
         "Ведет ночной образ жизни, днем прячется в ямах и под корягами"
       ],
       "thumb": "img/thumb/som.webp",
-      "images": ["img/full/som1.webp", "img/full/som2.webp"],
+      "images": ["img/full/som1.webp", "img/full/som2.webp", "img/full/som2.webp"],
       "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
