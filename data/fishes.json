@@ -256,7 +256,7 @@
         "За незаконный вылов грозит уголовная ответственность"
       ],
       "thumb": "img/thumb/khabius.webp",
-      "images": ["img/full/khabius1.webp", "img/full/khabius2.webp"],
+      "images": ["img/full/khabius1.webp", "img/full/khabius2.webp", "img/full/khabius3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
       "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
