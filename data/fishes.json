@@ -230,7 +230,7 @@
         "Дает ценную черную икру, из-за чего страдает от браконьеров"
       ],
       "thumb": "img/thumb/sterlyad.webp",
-      "images": ["img/full/sterlyad1.webp", "img/full/sterlyad2.webp"],
+      "images": ["img/full/sterlyad1.webp", "img/full/sterlyad2.webp", "img/full/sterlyad3.webp"],
       "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
