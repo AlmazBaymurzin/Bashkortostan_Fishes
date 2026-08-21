@@ -490,7 +490,7 @@
         "Зимой собирается в огромные стаи в придонных слоях"
       ],
       "thumb": "img/thumb/yersh.webp",
-      "images": ["img/full/yersh1.webp", "img/full/yersh2.webp"],
+      "images": ["img/full/yersh1.webp", "img/full/yersh2.webp", "img/full/yersh3.webp"],
       "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
