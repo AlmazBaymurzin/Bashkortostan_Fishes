@@ -282,7 +282,7 @@
         "Глаза язя имеют характерный желтоватый ободок"
       ],
       "thumb": "img/thumb/yaz.webp",
-      "images": ["img/full/yaz1.webp", "img/full/yaz2.webp"],
+      "images": ["img/full/yaz1.webp", "img/full/yaz2.webp", "img/full/yaz3.webp"],
       "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
