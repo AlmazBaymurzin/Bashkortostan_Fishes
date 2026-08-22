@@ -48,7 +48,7 @@
         "Зимой собирается в крупные стаи до 50-100 особей"
       ],
       "thumb": "img/thumb/okun.webp",
-      "images": ["img/full/okun1.webp", "img/full/okun2.webp"],
+      "images": ["img/full/okun3.webp", "img/full/okun2.webp","img/full/okun1.webp"],
       "activity": [0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0, 0]
     },
