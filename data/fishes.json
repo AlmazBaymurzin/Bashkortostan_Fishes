@@ -74,7 +74,7 @@
         "Чешуя леща используется в народной медицине"
       ],
       "thumb": "img/full/lesh1.webp",
-      "images": ["img/full/lesh1.webp", "img/full/lesh2.webp"],
+      "images": ["img/full/lesh1.webp", "img/full/lesh2.webp", "img/full/lesh3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
