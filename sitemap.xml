@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <!-- Главная страница -->
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <!-- О проекте -->
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/about.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Контакты -->
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/contacts.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Политика конфиденциальности -->
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/privacy.html</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- Страницы рыб (для каждой рыбы из fishes.json) -->
+  
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=shchuka</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=okun</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=leshh</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=sazan</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=sudak</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=plotva</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=karas</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=som</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=sterlyad</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=khabius</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=yaz</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=krasnoperka</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=lin</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=karp</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=pelyad</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=beliy_amur</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=tolstolobik</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=zhereh</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=yersh</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=ukleya</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=peskar</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=taimen</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=forel</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=osyotr</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html?id=sig</loc>
+    <lastmod>2026-08-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+</urlset>
