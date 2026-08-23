@@ -334,7 +334,7 @@
         "Чешуя покрыта слизью, что делает его скользким для хищников"
       ],
       "thumb": "img/thumb/lin.webp",
-      "images": ["img/full/lin1.webp", "img/full/lin2.webp"],
+      "images": ["img/full/lin1.webp", "img/full/lin2.webp", "img/full/lin3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 1, 0, 0, 0, 0, 0]
     },
