@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /editor.html
+Disallow: /fish.html?id=*
+
+Allow: /
+
+Sitemap: https://almazbaymurzin.github.io/Bashkortostan_Fishes/sitemap.xml
