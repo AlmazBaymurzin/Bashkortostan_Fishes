@@ -308,7 +308,7 @@
         "Похожа на плотву, но отличается более яркими плавниками"
       ],
       "thumb": "img/thumb/krasnoperka.webp",
-      "images": ["img/full/krasnoperka1.webp", "img/full/krasnoperka2.webp"],
+      "images": ["img/full/krasnoperka1.webp", "img/full/krasnoperka2.webp", "img/full/krasnoperka3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
