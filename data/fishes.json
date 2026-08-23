@@ -360,7 +360,7 @@
         "Может жить в прудах с низким содержанием кислорода"
       ],
       "thumb": "img/thumb/karp.webp",
-      "images": ["img/full/karp1.webp", "img/full/karp2.webp"],
+      "images": ["img/full/karp1.webp", "img/full/karp2.webp", "img/full/karp3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
