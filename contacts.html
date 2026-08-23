@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Контакты — Рыбы Башкортостана</title>
+    <link rel="icon" href="img/icons/favicon.png" type="image/png" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    <style>
+        .contacts-page {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+            margin: 20px 0 32px;
+        }
+        .contacts-page h1 {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0a2e4a;
+            margin-bottom: 24px;
+        }
+        .contacts-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin-top: 20px;
+        }
+        .contact-card {
+            background: #f8f9fa;
+            padding: 24px;
+            border-radius: 16px;
+            border: 1px solid #e8ecf0;
+            transition: all 0.3s;
+        }
+        .contact-card:hover {
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+            border-color: #1a5276;
+        }
+        .contact-card h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0a2e4a;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .contact-card p {
+            font-size: 15px;
+            color: #4a5a6a;
+            margin: 8px 0;
+            word-break: break-word;
+        }
+        .contact-card a {
+            color: #1a5276;
+            font-weight: 600;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .contact-card a:hover {
+            color: #0a3a5a;
+            text-decoration: underline;
+        }
+        .contact-address {
+            margin-top: 20px;
+            background: #fef9e7;
+            padding: 20px;
+            border-radius: 12px;
+            border-left: 5px solid #f1c40f;
+        }
+        .contact-address h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0a2e4a;
+            margin-bottom: 8px;
+        }
+        .contact-address p {
+            font-size: 15px;
+            color: #2a3a4a;
+        }
+        @media (max-width: 640px) {
+            .contacts-grid {
+                grid-template-columns: 1fr;
+            }
+            .contacts-page {
+                padding: 24px 20px;
+            }
+            .contacts-page h1 {
+                font-size: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" style="text-decoration:none;">
+                    <span class="logo-icon">🐟</span>
+                    <span class="logo-text">Рыбы <span class="logo-accent">Башкортостана</span></span>
+                </a>
+                <div class="header-controls">
+                    <a href="index.html" style="color:#1a5276;font-weight:600;font-size:15px;">← На главную</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="contacts-page">
+                <h1>📧 Контакты</h1>
+                <p style="font-size:16px;color:#4a5a6a;">Свяжитесь с нами по любым вопросам о проекте, рыбах или сотрудничестве.</p>
+
+                <div class="contacts-grid">
+                    <div class="contact-card">
+                        <h3>📧 Email</h3>
+                        <p><a href="mailto:krypton-mail@mail.ru">krypton-mail@mail.ru</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>📱 Телефон</h3>
+                        <p><a href="tel:+79374889380">+7 937 488-93-80</a></p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>📱 Telegram</h3>
+                        <p>Скоро</p>
+                        <p style="font-size:13px;color:#7a8a9a;">Ссылка появится позже</p>
+                    </div>
+                    <div class="contact-card">
+                        <h3>📱 ВКонтакте</h3>
+                        <p>Скоро</p>
+                        <p style="font-size:13px;color:#7a8a9a;">Ссылка появится позже</p>
+                    </div>
+                </div>
+
+                <div class="contact-address">
+                    <h3>📍 Наш адрес</h3>
+                    <p>Уфа, Башкортостан</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-info">
+                    <p>🐟 Справочник рыб Республики Башкортостан</p>
+                    <p class="footer-small">Данные основаны на открытых источниках и Красной книге Республики Башкортостан</p>
+                </div>
+                <div class="footer-links">
+                    <a href="contacts.html">Контакты</a>
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                    <a href="about.html">О проекте</a>
+                    <a href="mailto:krypton-mail@mail.ru">Почта</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111613780', 'ym');
+
+    ym(111613780, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111613780" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
