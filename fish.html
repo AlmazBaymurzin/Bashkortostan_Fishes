@@ -3,12 +3,43 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title id="pageTitle">Рыбы Башкортостана</title>
+    <title id="pageTitle">Рыбы России и Башкортостана</title>
     <link rel="icon" href="img/icons/favicon.png" type="image/png" />
+    
+    <!-- SEO Мета-теги (расширенные, обновляются динамически) -->
+    <meta name="description" content="Описание рыбы, места обитания, размеры, интересные факты, календарь клёва и нереста. Вся информация о рыбе из России и Башкортостана." />
+    <meta name="keywords" content="рыбы россии, рыбы башкортостана, рыбалка, виды рыб, рыбная карта, красная книга рыб, календарь клёва, нерест, интересные факты о рыбах" />
+    <meta name="author" content="Рыбы России и Башкортостана" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    
+    <!-- Open Graph (для соцсетей) -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Рыбы России и Башкортостана" />
+    <meta property="og:description" content="Описание рыбы, места обитания, размеры, интересные факты, календарь клёва и нереста." />
+    <meta property="og:url" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html" />
+    <meta property="og:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/thumb/shchuka.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ru_RU" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Рыбы России и Башкортостана" />
+    <meta name="twitter:description" content="Описание рыбы, места обитания, размеры, интересные факты, календарь клёва и нереста." />
+    <meta name="twitter:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/thumb/shchuka.webp" />
+    
+    <!-- Гео-теги (локальное SEO для Башкортостана) -->
+    <meta name="geo.region" content="RU-BA" />
+    <meta name="geo.placename" content="Уфа, Башкортостан, Россия" />
+    
+    <!-- Дополнительные SEO-теги -->
+    <link rel="canonical" href="https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html" />
+    <meta name="theme-color" content="#1a5276" />
+    
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
     <style>
-        /* Стили для карусели (дублируются для надёжности, но уже есть в style.css) */
+        /* Стили для карусели */
         .carousel-container {
             position: relative;
             width: 100%;
@@ -136,7 +167,7 @@
             <div class="footer-inner">
                 <div class="footer-info">
                     <p>🐟 Справочник рыб Республики Башкортостан</p>
-                    <p class="footer-small">Данные основаны на открытых источниках и Красной книге РБ</p>
+                    <p class="footer-small">Данные основаны на открытых источниках и Красной книге Республики Башкортостан</p>
                 </div>
                 <div class="footer-links">
                     <a href="contacts.html">Контакты</a>
@@ -187,9 +218,33 @@
                     return;
                 }
 
-                document.title = `${fish.name} — Рыбы Башкортостана`;
-                document.getElementById('pageTitle').textContent = `${fish.name} — Рыбы Башкортостана`;
+                // Обновляем мета-теги динамически под конкретную рыбу
+                document.title = `${fish.name} — Рыбы России и Башкортостана`;
+                document.getElementById('pageTitle').textContent = `${fish.name} — Рыбы России и Башкортостана`;
                 document.getElementById('breadcrumbFish').textContent = fish.name;
+
+                // Расширенный description с учётом рыбы
+                const fishName = fish.name || 'Рыба';
+                const fishFamily = fish.family || '';
+                const fishHabitat = Array.isArray(fish.habitat) ? fish.habitat.join(', ') : 'различные водоемы';
+                const fishSize = fish.size || 'различные размеры';
+                const fishWeight = fish.weight || 'различный вес';
+                
+                const desc = `${fishName} (${fish.latin || ''}) — описание, фото, места обитания (${fishHabitat}), размеры (${fishSize}), вес (${fishWeight}), интересные факты, календарь клёва и нереста. Рыбы России и Башкортостана.`;
+                const keywords = `${fishName}, ${fish.latin || ''}, ${fishFamily}, рыбы россии, рыбы башкортостана, рыбалка, ${fishHabitat}, календарь клёва, нерест, интересные факты, ${fish.status || ''}`;
+                
+                document.querySelector('meta[name="description"]').setAttribute('content', desc);
+                document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+                
+                // Open Graph
+                document.querySelector('meta[property="og:title"]').setAttribute('content', `${fishName} — Рыбы России и Башкортостана`);
+                document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
+                document.querySelector('meta[property="og:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${fish.thumb || 'img/placeholder.jpg'}`);
+                
+                // Twitter
+                document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${fishName} — Рыбы России и Башкортостана`);
+                document.querySelector('meta[name="twitter:description"]').setAttribute('content', desc);
+                document.querySelector('meta[name="twitter:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${fish.thumb || 'img/placeholder.jpg'}`);
 
                 let statusLabel = fish.status || 'Промысловая';
                 let statusClass = 'tag-promyslovaya';
