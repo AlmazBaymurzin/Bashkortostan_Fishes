@@ -386,7 +386,7 @@
         "Зимой не уходит на глубину, держится подо льдом"
       ],
       "thumb": "img/thumb/pelyad.webp",
-      "images": ["img/full/pelyad1.webp", "img/full/pelyad2.webp"],
+      "images": ["img/full/pelyad1.webp", "img/full/pelyad2.webp", "img/full/pelyad3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1],
       "spawn": [0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0]
     },
