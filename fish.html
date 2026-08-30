@@ -39,37 +39,15 @@
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
     <style>
-        /* ===== ОСНОВНЫЕ СТИЛИ СТРАНИЦЫ ===== */
-        .fish-page {
-            background: white;
-            border-radius: 20px;
-            padding: 32px;
-            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
-            margin-bottom: 32px;
-        }
-
-        /* Двухколоночная сетка */
-        .fish-layout {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 32px;
-        }
-
-        /* Левая колонка — фото */
-        .fish-photo-section {
-            display: flex;
-            flex-direction: column;
-        }
-
+        /* Стили для карусели */
         .carousel-container {
             position: relative;
             width: 100%;
-            height: 320px;
+            height: 380px;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
             background: #e8ecf0;
-            margin-bottom: 16px;
         }
         .carousel-slides {
             display: flex;
@@ -91,12 +69,12 @@
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.85);
+            background: rgba(255, 255, 255, 0.8);
             border: none;
-            width: 36px;
-            height: 36px;
+            width: 44px;
+            height: 44px;
             border-radius: 50%;
-            font-size: 18px;
+            font-size: 22px;
             cursor: pointer;
             box-shadow: 0 2px 8px rgba(0,0,0,0.15);
             transition: background 0.2s;
@@ -109,20 +87,20 @@
         .carousel-btn:hover {
             background: white;
         }
-        .carousel-btn.prev { left: 10px; }
-        .carousel-btn.next { right: 10px; }
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
         .carousel-dots {
             position: absolute;
-            bottom: 10px;
+            bottom: 12px;
             left: 50%;
             transform: translateX(-50%);
             display: flex;
-            gap: 6px;
+            gap: 8px;
             z-index: 10;
         }
         .carousel-dot {
-            width: 8px;
-            height: 8px;
+            width: 10px;
+            height: 10px;
             border-radius: 50%;
             background: rgba(255, 255, 255, 0.5);
             border: none;
@@ -132,67 +110,106 @@
         .carousel-dot.active {
             background: white;
         }
-
-        /* Правая колонка — информация */
-        .fish-info-section {
-            display: flex;
-            flex-direction: column;
+        .fish-page-image {
+            flex: 0 0 45%;
         }
-
-        .fish-page-name {
-            font-size: 32px;
-            font-weight: 800;
+        @media (max-width: 820px) {
+            .fish-page-top {
+                flex-direction: column;
+            }
+            .fish-page-image {
+                flex: unset;
+            }
+            .carousel-container {
+                height: 280px;
+            }
+        }
+        @media (max-width: 640px) {
+            .carousel-container {
+                height: 220px;
+            }
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+        }
+        
+        /* Стили для блока "Рыбацкие секреты" */
+        .fish-secrets {
+            background: #f0f7fc;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+            border: 1px solid #d4e0ff;
+        }
+        .fish-secrets h3 {
+            font-size: 20px;
+            font-weight: 700;
             color: #0a2e4a;
-            margin: 0 0 4px;
-            line-height: 1.1;
+            margin-bottom: 16px;
         }
-
-        .fish-page-latin {
-            font-size: 16px;
-            font-style: italic;
-            color: #7a8a9a;
-            margin-bottom: 8px;
+        .secret-block {
+            margin-bottom: 16px;
         }
-
-        .fish-page-tags {
+        .secret-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a5276;
+            margin-bottom: 4px;
+        }
+        .secret-value {
+            font-size: 15px;
+            color: #2a3a4a;
+            line-height: 1.6;
+        }
+        .secret-tags {
             display: flex;
             flex-wrap: wrap;
-            gap: 6px;
-            margin-bottom: 16px;
-        }
-
-        /* Характеристики — компактно */
-        .fish-specs-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
             gap: 8px;
-            background: #f8f9fa;
-            padding: 12px 16px;
-            border-radius: 12px;
-            margin-bottom: 16px;
+            margin-top: 4px;
         }
-        .spec-item {
-            display: flex;
-            justify-content: space-between;
+        .secret-tag {
+            background: white;
+            border: 1px solid #d4e0ff;
+            border-radius: 20px;
+            padding: 4px 14px;
             font-size: 13px;
-            padding: 4px 0;
-            border-bottom: 1px solid #e8ecf0;
-        }
-        .spec-item:last-child,
-        .spec-item:nth-last-child(2) {
-            border-bottom: none;
-        }
-        .spec-label {
-            color: #7a8a9a;
-            font-weight: 500;
-        }
-        .spec-value {
             font-weight: 600;
-            color: #0a2e4a;
-            text-align: right;
+            color: #1a5276;
         }
 
-        /* ===== КАЛЕНДАРИ ===== */
+        /* Стили для FAQ */
+        .fish-faq {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 16px;
+        }
+        .fish-faq h3 {
+            font-size: 16px;
+            font-weight: 700;
+            color: #0a2e4a;
+            margin-bottom: 12px;
+        }
+        .faq-item {
+            margin-bottom: 10px;
+        }
+        .faq-item summary {
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 14px;
+            color: #1a5276;
+            margin-bottom: 4px;
+        }
+        .faq-item p {
+            font-size: 14px;
+            color: #2a3a4a;
+            margin: 0;
+            padding-left: 16px;
+        }
+
+        /* ===== СТИЛИ ДЛЯ КАЛЕНДАРЕЙ ===== */
         .fish-calendars {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -266,124 +283,6 @@
         .calendar-legend .dot.green { background: #2e7d32; }
         .calendar-legend .dot.red { background: #c62828; }
         .calendar-legend .dot.gray { background: #f0f2f5; border: 1px solid #e0e4e8; }
-
-        /* ===== РЫБАЦКИЕ СЕКРЕТЫ (КОМПАКТНО) ===== */
-        .fish-secrets {
-            background: #f0f7fc;
-            border-radius: 12px;
-            padding: 16px;
-            border: 1px solid #d4e0ff;
-        }
-        .fish-secrets h3 {
-            font-size: 16px;
-            font-weight: 700;
-            color: #0a2e4a;
-            margin: 0 0 12px;
-        }
-        .secret-row {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-        .secret-icon {
-            font-size: 16px;
-            flex-shrink: 0;
-        }
-        .secret-content {
-            flex: 1;
-        }
-        .secret-label {
-            font-size: 13px;
-            font-weight: 700;
-            color: #1a5276;
-            margin-bottom: 2px;
-        }
-        .secret-value {
-            font-size: 13px;
-            color: #2a3a4a;
-            line-height: 1.5;
-        }
-        .secret-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 4px;
-            margin-top: 4px;
-        }
-        .secret-tag {
-            background: white;
-            border: 1px solid #d4e0ff;
-            border-radius: 12px;
-            padding: 2px 10px;
-            font-size: 12px;
-            font-weight: 600;
-            color: #1a5276;
-        }
-
-        /* ===== ИНТЕРЕСНЫЕ ФАКТЫ ===== */
-        .fish-facts {
-            background: #fef9e7;
-            border-radius: 12px;
-            padding: 16px;
-            border-left: 4px solid #f1c40f;
-            margin-top: 16px;
-        }
-        .fish-facts h4 {
-            font-size: 14px;
-            font-weight: 700;
-            color: #0a2e4a;
-            margin-bottom: 8px;
-        }
-        .fish-facts ul {
-            list-style: none;
-            padding: 0;
-        }
-        .fish-facts ul li {
-            padding: 4px 0 4px 24px;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="%23f1c40f" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>') left center no-repeat;
-            background-size: 16px;
-            font-size: 14px;
-            color: #2a3a4a;
-        }
-
-        /* ===== КНОПКА НАЗАД ===== */
-        .back-button {
-            display: inline-block;
-            padding: 8px 24px;
-            background: #f0f2f5;
-            border-radius: 30px;
-            color: #1a1a1a;
-            font-weight: 600;
-            text-decoration: none;
-            transition: background 0.2s;
-            margin-top: 20px;
-        }
-        .back-button:hover {
-            background: #e0e4e8;
-        }
-
-        /* ===== АДАПТИВНОСТЬ ===== */
-        @media (max-width: 820px) {
-            .fish-layout {
-                grid-template-columns: 1fr;
-            }
-            .carousel-container {
-                height: 280px;
-            }
-        }
-        @media (max-width: 640px) {
-            .fish-page {
-                padding: 16px;
-            }
-            .carousel-container {
-                height: 220px;
-            }
-            .fish-page-name {
-                font-size: 24px;
-            }
-            .fish-calendars {
-                grid-template-columns: 1fr;
-            }
-        }
     </style>
 </head>
 <body>
@@ -477,19 +376,31 @@
                     return;
                 }
 
+                // Обновляем мета-теги динамически под конкретную рыбу
                 document.title = `${fish.name} — Рыбы России и Башкортостана`;
                 document.getElementById('pageTitle').textContent = `${fish.name} — Рыбы России и Башкортостана`;
                 document.getElementById('breadcrumbFish').textContent = fish.name;
 
-                const desc = `${fish.name} — описание, фото, места обитания, размеры, интересные факты, календарь клёва и нереста.`;
-                const keywords = `${fish.name}, рыбы россии, рыбы башкортостана, рыбалка, ${fish.family || ''}, календарь клёва, нерест`;
+                // Расширенный description с учётом рыбы
+                const fishName = fish.name || 'Рыба';
+                const fishFamily = fish.family || '';
+                const fishHabitat = Array.isArray(fish.habitat) ? fish.habitat.join(', ') : 'различные водоемы';
+                const fishSize = fish.size || 'различные размеры';
+                const fishWeight = fish.weight || 'различный вес';
+                
+                const desc = `${fishName} (${fish.latin || ''}) — описание, фото, места обитания (${fishHabitat}), размеры (${fishSize}), вес (${fishWeight}), интересные факты, календарь клёва и нереста. Рыбы России и Башкортостана.`;
+                const keywords = `${fishName}, ${fish.latin || ''}, ${fishFamily}, рыбы россии, рыбы башкортостана, рыбалка, ${fishHabitat}, календарь клёва, нерест, интересные факты, ${fish.status || ''}`;
                 
                 document.querySelector('meta[name="description"]').setAttribute('content', desc);
                 document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
-                document.querySelector('meta[property="og:title"]').setAttribute('content', `${fish.name} — Рыбы России и Башкортостана`);
+                
+                // Open Graph
+                document.querySelector('meta[property="og:title"]').setAttribute('content', `${fishName} — Рыбы России и Башкортостана`);
                 document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
                 document.querySelector('meta[property="og:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${fish.thumb || 'img/placeholder.jpg'}`);
-                document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${fish.name} — Рыбы России и Башкортостана`);
+                
+                // Twitter
+                document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${fishName} — Рыбы России и Башкортостана`);
                 document.querySelector('meta[name="twitter:description"]').setAttribute('content', desc);
                 document.querySelector('meta[name="twitter:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${fish.thumb || 'img/placeholder.jpg'}`);
 
@@ -500,7 +411,7 @@
                     statusLabel = 'Красная книга ⚠️';
                 }
 
-                // Карусель
+                // Формируем HTML для карусели
                 let carouselHTML = '';
                 const images = fish.images && fish.images.length > 0 ? fish.images : [fish.thumb || 'img/placeholder.jpg'];
                 
@@ -529,9 +440,9 @@
                     `;
                 }
 
-                // Календари
+                // ===== ГЕНЕРАЦИЯ КАЛЕНДАРЕЙ =====
                 function renderCalendar(dataArray, className) {
-                    if (!dataArray || dataArray.length !== 12) return '';
+                    if (!dataArray || dataArray.length !== 12) return '<div style="color:#999;font-size:13px;">Данные не указаны</div>';
                     return `
                         <div class="calendar-row">
                             ${dataArray.map((val, idx) => `
@@ -544,7 +455,7 @@
                     `;
                 }
 
-                // Рыбацкие секреты
+                // ===== ГЕНЕРАЦИЯ БЛОКА "РЫБАЦКИЕ СЕКРЕТЫ" =====
                 function renderSecrets(fish) {
                     if (!fish.bait && !fish.lure && !fish.tackle && !fish.technique && !fish.tips) return '';
                     
@@ -552,13 +463,10 @@
                     
                     if (fish.bait && fish.bait.length > 0) {
                         secretsHTML += `
-                            <div class="secret-row">
-                                <span class="secret-icon">🪝</span>
-                                <div class="secret-content">
-                                    <div class="secret-label">На что клюёт:</div>
-                                    <div class="secret-tags">
-                                        ${fish.bait.map(b => `<span class="secret-tag">${escapeHtml(b)}</span>`).join('')}
-                                    </div>
+                            <div class="secret-block">
+                                <div class="secret-label">🪝 На что клюёт:</div>
+                                <div class="secret-tags">
+                                    ${fish.bait.map(b => `<span class="secret-tag">${escapeHtml(b)}</span>`).join('')}
                                 </div>
                             </div>
                         `;
@@ -566,48 +474,36 @@
                     
                     if (fish.lure) {
                         secretsHTML += `
-                            <div class="secret-row">
-                                <span class="secret-icon">🏷️</span>
-                                <div class="secret-content">
-                                    <div class="secret-label">Лучшие приманки:</div>
-                                    <div class="secret-value">${escapeHtml(fish.lure)}</div>
-                                </div>
+                            <div class="secret-block">
+                                <div class="secret-label">🏷️ Лучшие приманки:</div>
+                                <div class="secret-value">${escapeHtml(fish.lure)}</div>
                             </div>
                         `;
                     }
                     
                     if (fish.tackle) {
                         secretsHTML += `
-                            <div class="secret-row">
-                                <span class="secret-icon">🎣</span>
-                                <div class="secret-content">
-                                    <div class="secret-label">Снасти:</div>
-                                    <div class="secret-value">${escapeHtml(fish.tackle)}</div>
-                                </div>
+                            <div class="secret-block">
+                                <div class="secret-label">🎣 Снасти:</div>
+                                <div class="secret-value">${escapeHtml(fish.tackle)}</div>
                             </div>
                         `;
                     }
                     
                     if (fish.technique) {
                         secretsHTML += `
-                            <div class="secret-row">
-                                <span class="secret-icon">📋</span>
-                                <div class="secret-content">
-                                    <div class="secret-label">Техника:</div>
-                                    <div class="secret-value">${escapeHtml(fish.technique)}</div>
-                                </div>
+                            <div class="secret-block">
+                                <div class="secret-label">📋 Техника:</div>
+                                <div class="secret-value">${escapeHtml(fish.technique)}</div>
                             </div>
                         `;
                     }
                     
                     if (fish.tips) {
                         secretsHTML += `
-                            <div class="secret-row">
-                                <span class="secret-icon">💡</span>
-                                <div class="secret-content">
-                                    <div class="secret-label">Советы:</div>
-                                    <div class="secret-value">${escapeHtml(fish.tips)}</div>
-                                </div>
+                            <div class="secret-block">
+                                <div class="secret-label">💡 Советы:</div>
+                                <div class="secret-value">${escapeHtml(fish.tips)}</div>
                             </div>
                         `;
                     }
@@ -616,40 +512,102 @@
                     return secretsHTML;
                 }
 
+                // ===== ГЕНЕРАЦИЯ FAQ =====
+                function renderFaq(fish) {
+                    let faqItems = [];
+                    
+                    if (fish.habitat && fish.habitat.length > 0) {
+                        faqItems.push({
+                            q: `Где водится ${fish.name}?`,
+                            a: `${fish.name} встречается в водоёмах: ${fish.habitat.join(', ')}.`
+                        });
+                    }
+                    
+                    if (fish.status && fish.status.includes('краснокнижная')) {
+                        faqItems.push({
+                            q: `${fish.name} в Красной книге?`,
+                            a: `Да, ${fish.name} занесена в Красную книгу Республики Башкортостан. Ловля запрещена!`
+                        });
+                    } else if (fish.status && fish.status.includes('промысловая')) {
+                        faqItems.push({
+                            q: `${fish.name} в Красной книге?`,
+                            a: `Нет, ${fish.name} не занесена в Красную книгу. Это промысловая рыба.`
+                        });
+                    }
+                    
+                    if (fish.spawning) {
+                        faqItems.push({
+                            q: `Когда нерестится ${fish.name}?`,
+                            a: `Нерест ${fish.name} происходит: ${fish.spawning}.`
+                        });
+                    }
+                    
+                    if (fish.size) {
+                        faqItems.push({
+                            q: `Какие размеры у ${fish.name}?`,
+                            a: `${fish.name} может достигать размеров: ${fish.size}.`
+                        });
+                    }
+                    
+                    if (faqItems.length === 0) return '';
+                    
+                    return `
+                        <div class="fish-faq">
+                            <h3>❓ Частые вопросы</h3>
+                            ${faqItems.map(item => `
+                                <details class="faq-item">
+                                    <summary>${escapeHtml(item.q)}</summary>
+                                    <p>${escapeHtml(item.a)}</p>
+                                </details>
+                            `).join('')}
+                        </div>
+                    `;
+                }
+
+                // ===== СХЕМА.ORG (структурированные данные) =====
+                function renderSchemaOrg(fish) {
+                    const schema = {
+                        "@context": "https://schema.org",
+                        "@type": "Article",
+                        "headline": `${fish.name} — Рыбы России и Башкортостана`,
+                        "description": `Описание рыбы ${fish.name}: места обитания, размеры, интересные факты, календарь клёва и нереста.`,
+                        "image": `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${fish.thumb || 'img/placeholder.jpg'}`,
+                        "author": {
+                            "@type": "Person",
+                            "name": "Рыбы Башкортостана"
+                        },
+                        "publisher": {
+                            "@type": "Organization",
+                            "name": "Рыбы Башкортостана"
+                        }
+                    };
+                    
+                    return `<script type="application/ld+json">${JSON.stringify(schema)}<\/script>`;
+                }
+
                 // Собираем страницу
                 pageContainer.innerHTML = `
-                    <div class="fish-layout">
-                        <!-- Левая колонка: фото + факты -->
-                        <div class="fish-photo-section">
+                    <div class="fish-page-top">
+                        <div class="fish-page-image">
                             ${carouselHTML}
-                            ${fish.funFacts && fish.funFacts.length > 0 ? `
-                            <div class="fish-facts">
-                                <h4>💡 Интересные факты</h4>
-                                <ul>
-                                    ${fish.funFacts.map(fact => `<li>${fact}</li>`).join('')}
-                                </ul>
-                            </div>
-                            ` : ''}
                         </div>
-
-                        <!-- Правая колонка: инфо + календари + секреты -->
-                        <div class="fish-info-section">
+                        <div class="fish-page-info">
                             <h1 class="fish-page-name">${fish.name}</h1>
                             <div class="fish-page-latin">${fish.latin || ''}</div>
                             <div class="fish-page-tags">
                                 <span class="tag ${statusClass}">${statusLabel}</span>
                                 <span class="tag">${fish.family || ''}</span>
                             </div>
-
-                            <div class="fish-specs-grid">
+                            <div class="fish-page-specs">
                                 <div class="spec-item"><span class="spec-label">Размер</span><span class="spec-value">${fish.size || '—'}</span></div>
                                 <div class="spec-item"><span class="spec-label">Вес</span><span class="spec-value">${fish.weight || '—'}</span></div>
-                                <div class="spec-item"><span class="spec-label">Питание</span><span class="spec-value">${fish.diet || '—'}</span></div>
-                                <div class="spec-item"><span class="spec-label">Места</span><span class="spec-value">${Array.isArray(fish.habitat) ? fish.habitat.join(', ') : '—'}</span></div>
+                                <div class="spec-item"><span class="spec-label">Тип питания</span><span class="spec-value">${fish.diet || '—'}</span></div>
+                                <div class="spec-item"><span class="spec-label">Места обитания</span><span class="spec-value">${Array.isArray(fish.habitat) ? fish.habitat.join(', ') : '—'}</span></div>
                                 ${fish.max_length ? `<div class="spec-item"><span class="spec-label">Макс. длина</span><span class="spec-value">${fish.max_length}</span></div>` : ''}
                                 ${fish.max_weight ? `<div class="spec-item"><span class="spec-label">Макс. вес</span><span class="spec-value">${fish.max_weight}</span></div>` : ''}
                             </div>
 
+                            <!-- ===== КАЛЕНДАРИ ===== -->
                             <div class="fish-calendars">
                                 <div class="fish-calendar-block">
                                     <h4>🎣 Когда ловится</h4>
@@ -669,11 +627,32 @@
                                 </div>
                             </div>
 
+                            <!-- ===== РЫБАЦКИЕ СЕКРЕТЫ ===== -->
                             ${renderSecrets(fish)}
+
+                            <!-- ===== FAQ ===== -->
+                            ${renderFaq(fish)}
                         </div>
                     </div>
 
-                    <a href="index.html" class="back-button">← Назад к списку</a>
+                    ${fish.funFacts && fish.funFacts.length > 0 ? `
+                    <div class="fish-facts">
+                        <h4>💡 Интересные факты</h4>
+                        <ul>
+                            ${fish.funFacts.map(fact => `<li>${fact}</li>`).join('')}
+                        </ul>
+                    </div>
+                    ` : ''}
+
+                    ${renderSchemaOrg(fish)}
+
+                    <div style="margin-top:24px;">
+                        <a href="index.html" style="display:inline-block;padding:10px 28px;background:#f0f2f5;border-radius:30px;color:#1a1a1a;font-weight:600;text-decoration:none;transition:background 0.2s;" 
+                           onmouseover="this.style.background='#e0e4e8'" 
+                           onmouseout="this.style.background='#f0f2f5'">
+                            ← Назад к списку
+                        </a>
+                    </div>
                 `;
 
                 // Инициализация карусели
