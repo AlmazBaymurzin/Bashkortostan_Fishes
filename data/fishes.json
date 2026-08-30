@@ -412,7 +412,7 @@
         "В Китае белый амур — одна из главных промысловых рыб"
       ],
       "thumb": "img/thumb/beliy_amur.webp",
-      "images": ["img/full/beliy_amur1.webp", "img/full/beliy_amur2.webp"],
+      "images": ["img/full/beliy_amur1.webp", "img/full/beliy_amur2.webp", "img/full/beliy_amur3.webp],
       "activity": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]
     },
