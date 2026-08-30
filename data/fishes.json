@@ -523,7 +523,7 @@
       "technique": "Ловля на фидер или поплавочную удочку с прикормкой из водорослей, фитопланктона. Важно дать приманке опуститься на глубину.",
       "tips": "Толстолобик любит глубокие участки с чистой водой. Наиболее активен в тёплые летние месяцы. Очень осторожная рыба — не шумите!",
       "thumb": "img/thumb/tolstolobik.webp",
-      "images": ["img/full/tolstolobik1.webp", "img/full/tolstolobik2.webp"],
+      "images": ["img/full/tolstolobik1.webp", "img/full/tolstolobik2.webp", "img/full/tolstolobik3.webp"],
       "activity": [0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0]
     },
