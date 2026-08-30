@@ -134,6 +134,50 @@
                 font-size: 16px;
             }
         }
+        
+        /* Стили для блока "Рыбацкие секреты" */
+        .fish-secrets {
+            background: #f0f7fc;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 24px;
+            border: 1px solid #d4e0ff;
+        }
+        .fish-secrets h3 {
+            font-size: 20px;
+            font-weight: 700;
+            color: #0a2e4a;
+            margin-bottom: 16px;
+        }
+        .secret-block {
+            margin-bottom: 16px;
+        }
+        .secret-label {
+            font-size: 14px;
+            font-weight: 700;
+            color: #1a5276;
+            margin-bottom: 4px;
+        }
+        .secret-value {
+            font-size: 15px;
+            color: #2a3a4a;
+            line-height: 1.6;
+        }
+        .secret-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 4px;
+        }
+        .secret-tag {
+            background: white;
+            border: 1px solid #d4e0ff;
+            border-radius: 20px;
+            padding: 4px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            color: #1a5276;
+        }
     </style>
 </head>
 <body>
@@ -297,6 +341,63 @@
                     `;
                 }
 
+                // ===== ГЕНЕРАЦИЯ БЛОКА "РЫБАЦКИЕ СЕКРЕТЫ" =====
+                function renderSecrets(fish) {
+                    if (!fish.bait && !fish.lure && !fish.tackle && !fish.technique && !fish.tips) return '';
+                    
+                    let secretsHTML = `<div class="fish-secrets"><h3>🎣 Рыбацкие секреты</h3>`;
+                    
+                    if (fish.bait && fish.bait.length > 0) {
+                        secretsHTML += `
+                            <div class="secret-block">
+                                <div class="secret-label">🪝 На что клюёт:</div>
+                                <div class="secret-tags">
+                                    ${fish.bait.map(b => `<span class="secret-tag">${escapeHtml(b)}</span>`).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (fish.lure) {
+                        secretsHTML += `
+                            <div class="secret-block">
+                                <div class="secret-label">🏷️ Лучшие приманки:</div>
+                                <div class="secret-value">${escapeHtml(fish.lure)}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (fish.tackle) {
+                        secretsHTML += `
+                            <div class="secret-block">
+                                <div class="secret-label">🎣 Снасти:</div>
+                                <div class="secret-value">${escapeHtml(fish.tackle)}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (fish.technique) {
+                        secretsHTML += `
+                            <div class="secret-block">
+                                <div class="secret-label">📋 Техника:</div>
+                                <div class="secret-value">${escapeHtml(fish.technique)}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (fish.tips) {
+                        secretsHTML += `
+                            <div class="secret-block">
+                                <div class="secret-label">💡 Советы:</div>
+                                <div class="secret-value">${escapeHtml(fish.tips)}</div>
+                            </div>
+                        `;
+                    }
+                    
+                    secretsHTML += `</div>`;
+                    return secretsHTML;
+                }
+
                 pageContainer.innerHTML = `
                     <div class="fish-page-top">
                         <div class="fish-page-image">
@@ -337,6 +438,9 @@
                                     </div>
                                 </div>
                             </div>
+
+                            <!-- ===== РЫБАЦКИЕ СЕКРЕТЫ ===== -->
+                            ${renderSecrets(fish)}
                         </div>
                     </div>
 
