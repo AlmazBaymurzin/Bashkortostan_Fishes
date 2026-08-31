@@ -616,7 +616,7 @@
       "technique": "Ловля на поплавочную удочку в верхних слоях воды. Прикормка из хлебных крошек, панировочных сухарей.",
       "tips": "Уклея любит чистую воду, участки у поверхности. Наиболее активна в тёплые летние месяцы. Отличная наживка для хищников.",
       "thumb": "img/thumb/ukleya.webp",
-      "images": ["img/full/ukleya1.webp", "img/full/ukleya2.webp"],
+      "images": ["img/full/ukleya1.webp", "img/full/ukleya2.webp", "img/full/ukleya3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
