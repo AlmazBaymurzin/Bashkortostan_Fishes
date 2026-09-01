@@ -647,7 +647,7 @@
       "technique": "Ловля на поплавочную удочку или донную снасть. Прикормка из панировочных сухарей, отрубей.",
       "tips": "Пескарь любит чистую воду с каменистым дном. Наиболее активен в дневные часы. Отличная наживка для хищных рыб.",
       "thumb": "img/thumb/peskar.webp",
-      "images": ["img/full/peskar1.webp", "img/full/peskar2.webp"],
+      "images": ["img/full/peskar1.webp", "img/full/peskar2.webp", "img/full/peskar3.webp"],
       "activity": [0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 0, 0],
       "spawn": [0, 0, 0, 0, 1, 1, 0, 0, 0, 0, 0, 0]
     },
