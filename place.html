@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title id="pageTitle">Рыбное место — Рыбы России и Башкортостана</title>
+    <link rel="icon" href="img/icons/favicon.png" type="image/png" />
+    
+    <!-- SEO Мета-теги (обновляются динамически) -->
+    <meta name="description" content="Описание рыбного места: что ловится, как добраться, советы." />
+    <meta name="keywords" content="рыбные места башкортостана, рыбалка, куда поехать на рыбалку" />
+    <meta name="author" content="Рыбы России и Башкортостана" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    
+    <!-- Open Graph -->
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="Рыбное место — Рыбы России и Башкортостана" />
+    <meta property="og:description" content="Описание рыбного места: что ловится, как добраться, советы." />
+    <meta property="og:url" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/place.html" />
+    <meta property="og:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/places/pavlovskoe1.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content="ru_RU" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Рыбное место — Рыбы России и Башкортостана" />
+    <meta name="twitter:description" content="Описание рыбного места: что ловится, как добраться, советы." />
+    <meta name="twitter:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/places/pavlovskoe1.webp" />
+    
+    <!-- Гео-теги -->
+    <meta name="geo.region" content="RU-BA" />
+    <meta name="geo.placename" content="Уфа, Башкортостан, Россия" />
+    
+    <!-- Canonical -->
+    <link rel="canonical" href="https://almazbaymurzin.github.io/Bashkortostan_Fishes/place.html" />
+    <meta name="theme-color" content="#1a5276" />
+    
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    
+    <style>
+        /* ===== ОСНОВНАЯ СЕТКА ===== */
+        .place-page {
+            background: white;
+            border-radius: 20px;
+            padding: 32px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.05);
+            margin-bottom: 32px;
+        }
+
+        /* Двухколоночная сетка: слева фото, справа текст */
+        .place-layout {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            align-items: start;
+        }
+
+        /* ===== ЛЕВАЯ КОЛОНКА — ФОТО ===== */
+        .place-photo-section {
+            position: sticky;
+            top: 90px;
+        }
+
+        .carousel-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            background: #e8ecf0;
+        }
+        .carousel-slides {
+            display: flex;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.4s ease-in-out;
+        }
+        .carousel-slide {
+            min-width: 100%;
+            height: 100%;
+        }
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255, 255, 255, 0.85);
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            font-size: 20px;
+            cursor: pointer;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+            transition: background 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #1a1a1a;
+            z-index: 10;
+        }
+        .carousel-btn:hover {
+            background: white;
+        }
+        .carousel-btn.prev { left: 12px; }
+        .carousel-btn.next { right: 12px; }
+        .carousel-dots {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 10;
+        }
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .carousel-dot.active {
+            background: white;
+        }
+
+        /* Быстрая информация под фото */
+        .place-quick-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            background: #f8f9fa;
+            padding: 14px 16px;
+            border-radius: 12px;
+            margin-top: 16px;
+        }
+        .place-quick-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 13px;
+            color: #2a3a4a;
+        }
+        .place-quick-item .label {
+            color: #7a8a9a;
+            font-weight: 500;
+        }
+        .place-quick-item .value {
+            font-weight: 600;
+            color: #0a2e4a;
+        }
+
+        /* ===== ПРАВАЯ КОЛОНКА — ТЕКСТ ===== */
+        .place-info-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .place-page-name {
+            font-size: 32px;
+            font-weight: 800;
+            color: #0a2e4a;
+            margin: 0 0 8px;
+            line-height: 1.15;
+        }
+
+        .place-page-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+        .place-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 13px;
+            font-weight: 600;
+            padding: 4px 14px;
+            border-radius: 20px;
+            background: #e3f2fd;
+            color: #0d47a1;
+        }
+        .place-badge.region {
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+        .place-badge.coords {
+            background: #f0f2f5;
+            color: #4a5a6a;
+        }
+
+        /* Блок "Описание" */
+        .place-section {
+            margin-bottom: 20px;
+        }
+        .place-section h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a5276;
+            margin: 0 0 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .place-section p {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #2a3a4a;
+            margin: 0;
+        }
+
+        /* Блок "Что ловится" */
+        .place-fish-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .place-fish-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 6px 14px;
+            border-radius: 20px;
+            background: #e8f5e9;
+            color: #2e7d32;
+            font-size: 13px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.25s ease;
+            border: 1px solid #c8e6c9;
+        }
+        .place-fish-link:hover {
+            background: #2e7d32;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 125, 50, 0.3);
+        }
+        .place-fish-link.red-book {
+            background: #ffebee;
+            color: #c62828;
+            border-color: #ffcdd2;
+        }
+        .place-fish-link.red-book:hover {
+            background: #c62828;
+            color: white;
+            box-shadow: 0 4px 12px rgba(198, 40, 40, 0.3);
+        }
+
+        /* Блок "Как добраться" */
+        .place-howto {
+            background: #f0f7fc;
+            border-radius: 12px;
+            padding: 16px;
+            border-left: 4px solid #1a5276;
+        }
+        .place-howto h3 {
+            color: #1a5276;
+        }
+
+        /* Блок "Советы" */
+        .place-tips {
+            background: #fef9e7;
+            border-radius: 12px;
+            padding: 16px;
+            border-left: 4px solid #f1c40f;
+        }
+        .place-tips h3 {
+            color: #b7950b;
+        }
+
+        /* Кнопка "Назад" */
+        .back-button {
+            display: inline-block;
+            padding: 10px 28px;
+            background: #f0f2f5;
+            border-radius: 30px;
+            color: #1a1a1a;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s;
+            margin-top: 24px;
+        }
+        .back-button:hover {
+            background: #e0e4e8;
+        }
+
+        /* ===== АДАПТИВНОСТЬ ===== */
+        @media (max-width: 820px) {
+            .place-layout {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .place-photo-section {
+                position: static;
+            }
+            .carousel-container {
+                height: 280px;
+            }
+        }
+        @media (max-width: 640px) {
+            .place-page {
+                padding: 16px;
+            }
+            .carousel-container {
+                height: 220px;
+            }
+            .place-page-name {
+                font-size: 24px;
+            }
+            .place-quick-info {
+                grid-template-columns: 1fr;
+            }
+            .carousel-btn {
+                width: 32px;
+                height: 32px;
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header-inner">
+                <a href="index.html" class="logo" style="text-decoration:none;">
+                    <span class="logo-icon">🐟</span>
+                    <span class="logo-text">Рыбы <span class="logo-accent">Башкортостана</span></span>
+                </a>
+                <div class="header-controls">
+                    <a href="places.html" style="color:#1a5276;font-weight:600;font-size:15px;">← Все места</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="breadcrumbs">
+                <a href="index.html">Главная</a> / 
+                <a href="places.html">Рыбные места</a> / 
+                <span id="breadcrumbPlace">Место</span>
+            </div>
+            
+            <div class="place-page" id="placePage">
+                <div style="text-align:center;padding:40px;">⏳ Загрузка данных...</div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-info">
+                    <p>🐟 Справочник рыб Республики Башкортостан</p>
+                    <p class="footer-small">Данные основаны на открытых источниках и Красной книге Республики Башкортостан</p>
+                </div>
+                <div class="footer-links">
+                    <a href="places.html">📍 Рыбные места</a>
+                    <a href="contacts.html">Контакты</a>
+                    <a href="privacy.html">Политика конфиденциальности</a>
+                    <a href="about.html">О проекте</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function escapeHtml(str) {
+            if (!str) return '';
+            return String(str).replace(/[&<>]/g, function(m) {
+                if (m === '&') return '&amp;';
+                if (m === '<') return '&lt;';
+                if (m === '>') return '&gt;';
+                return m;
+            });
+        }
+
+        function getPlaceId() {
+            const params = new URLSearchParams(window.location.search);
+            return params.get('id');
+        }
+
+        async function loadPlacePage() {
+            const placeId = getPlaceId();
+            const pageContainer = document.getElementById('placePage');
+            
+            if (!placeId) {
+                pageContainer.innerHTML = `
+                    <div style="text-align:center;padding:40px;">
+                        <h2>⚠️ Место не найдено</h2>
+                        <p style="color:#7a8a9a;">Вернитесь на <a href="places.html" style="color:#1a5276;font-weight:600;">страницу мест</a>.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            try {
+                // Загружаем места и рыб параллельно
+                const [placesRes, fishesRes] = await Promise.all([
+                    fetch('data/places.json'),
+                    fetch('data/fishes.json')
+                ]);
+                
+                if (!placesRes.ok) throw new Error(`Ошибка загрузки мест: ${placesRes.status}`);
+                if (!fishesRes.ok) throw new Error(`Ошибка загрузки рыб: ${fishesRes.status}`);
+                
+                const placesData = await placesRes.json();
+                const fishesData = await fishesRes.json();
+                
+                const place = (placesData.places || []).find(p => p.id === placeId);
+                
+                if (!place) {
+                    pageContainer.innerHTML = `
+                        <div style="text-align:center;padding:40px;">
+                            <h2>⚠️ Место не найдено</h2>
+                            <p style="color:#7a8a9a;">Вернитесь на <a href="places.html" style="color:#1a5276;font-weight:600;">страницу мест</a>.</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Карта рыб для быстрого поиска
+                const fishesMap = {};
+                (fishesData.fishes || []).forEach(fish => {
+                    fishesMap[fish.id] = fish;
+                });
+
+                // Обновляем заголовок страницы
+                document.title = `${place.name} — рыбалка, что ловится, как добраться`;
+                document.getElementById('pageTitle').textContent = `${place.name} — рыбалка, что ловится, как добраться`;
+                document.getElementById('breadcrumbPlace').textContent = place.name;
+
+                // Обновляем мета-теги
+                const fishNames = (place.fish || []).map(id => fishesMap[id]?.name).filter(Boolean).join(', ');
+                const desc = `${place.name} (${place.region || 'Башкортостан'}) — рыбалка: ${fishNames}. ${place.shortDescription || ''}`;
+                const keywords = `${place.name}, рыбалка, ${place.region || ''}, ${fishNames}, рыбные места башкортостана`;
+
+                document.querySelector('meta[name="description"]').setAttribute('content', desc);
+                document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+                
+                document.querySelector('meta[property="og:title"]').setAttribute('content', `${place.name} — рыбалка в Башкортостане`);
+                document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
+                document.querySelector('meta[property="og:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${place.thumb || 'img/placeholder.jpg'}`);
+                
+                document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${place.name} — рыбалка в Башкортостане`);
+                document.querySelector('meta[name="twitter:description"]').setAttribute('content', desc);
+                document.querySelector('meta[name="twitter:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${place.thumb || 'img/placeholder.jpg'}`);
+
+                // Тип места
+                let typeLabel = 'Место';
+                let typeEmoji = '📍';
+                if (place.type === 'река') { typeLabel = 'Река'; typeEmoji = '🏞'; }
+                else if (place.type === 'озеро') { typeLabel = 'Озеро'; typeEmoji = '💧'; }
+                else if (place.type === 'водохранилище') { typeLabel = 'Водохранилище'; typeEmoji = '🌊'; }
+
+                // Карусель
+                let carouselHTML = '';
+                const images = place.images && place.images.length > 0 ? place.images : [place.thumb || 'img/placeholder.jpg'];
+                
+                if (images.length === 1) {
+                    carouselHTML = `
+                        <div class="carousel-container" style="background:transparent;box-shadow:none;">
+                            <img src="${images[0]}" alt="${escapeHtml(place.name)}" style="width:100%;height:100%;object-fit:cover;border-radius:16px;" onerror="this.src='img/placeholder.jpg'" />
+                        </div>
+                    `;
+                } else {
+                    carouselHTML = `
+                        <div class="carousel-container" id="carouselContainer">
+                            <div class="carousel-slides" id="carouselSlides">
+                                ${images.map(img => `
+                                    <div class="carousel-slide">
+                                        <img src="${img}" alt="${escapeHtml(place.name)}" loading="lazy" onerror="this.src='img/placeholder.jpg'" />
+                                    </div>
+                                `).join('')}
+                            </div>
+                            <button class="carousel-btn prev" onclick="changeSlide(-1)">‹</button>
+                            <button class="carousel-btn next" onclick="changeSlide(1)">›</button>
+                            <div class="carousel-dots" id="carouselDots">
+                                ${images.map((_, idx) => `<button class="carousel-dot ${idx === 0 ? 'active' : ''}" onclick="goToSlide(${idx})"></button>`).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // Список рыб (кликабельные ссылки)
+                let fishListHTML = '';
+                if (place.fish && place.fish.length > 0) {
+                    fishListHTML = place.fish.map(fishId => {
+                        const fish = fishesMap[fishId];
+                        if (!fish) return '';
+                        const isRedBook = fish.status && fish.status.includes('краснокнижная');
+                        return `
+                            <a href="fish.html?id=${fish.id}" class="place-fish-link ${isRedBook ? 'red-book' : ''}" title="Подробнее о рыбе ${escapeHtml(fish.name)}">
+                                🐟 ${escapeHtml(fish.name)}
+                                ${isRedBook ? '⚠️' : ''}
+                            </a>
+                        `;
+                    }).join('');
+                } else {
+                    fishListHTML = '<p style="color:#7a8a9a;font-size:14px;">Информация уточняется</p>';
+                }
+
+                // Собираем страницу
+                pageContainer.innerHTML = `
+                    <div class="place-layout">
+                        <!-- ЛЕВАЯ КОЛОНКА: ФОТО -->
+                        <div class="place-photo-section">
+                            ${carouselHTML}
+                            
+                            <div class="place-quick-info">
+                                <div class="place-quick-item">
+                                    <span class="label">🏞 Тип:</span>
+                                    <span class="value">${typeLabel}</span>
+                                </div>
+                                <div class="place-quick-item">
+                                    <span class="label">📍 Район:</span>
+                                    <span class="value">${escapeHtml(place.region || '—')}</span>
+                                </div>
+                                ${place.coordinates ? `
+                                <div class="place-quick-item" style="grid-column: 1 / -1;">
+                                    <span class="label">🧭 Координаты:</span>
+                                    <span class="value">${escapeHtml(place.coordinates)}</span>
+                                </div>
+                                ` : ''}
+                            </div>
+                        </div>
+
+                        <!-- ПРАВАЯ КОЛОНКА: ТЕКСТ -->
+                        <div class="place-info-section">
+                            <h1 class="place-page-name">${escapeHtml(place.name)}</h1>
+                            
+                            <div class="place-page-meta">
+                                <span class="place-badge">${typeEmoji} ${typeLabel}</span>
+                                <span class="place-badge region">📍 ${escapeHtml(place.region || 'Башкортостан')}</span>
+                            </div>
+
+                            <!-- Описание -->
+                            <div class="place-section">
+                                <h3>📝 Описание</h3>
+                                <p>${escapeHtml(place.fullDescription || place.shortDescription || 'Описание уточняется.')}</p>
+                            </div>
+
+                            <!-- Что ловится -->
+                            <div class="place-section">
+                                <h3>🐟 Какие рыбы водятся</h3>
+                                <div class="place-fish-list">
+                                    ${fishListHTML}
+                                </div>
+                            </div>
+
+                            <!-- Как добраться -->
+                            ${place.howToGet ? `
+                            <div class="place-section place-howto">
+                                <h3>🚗 Как добраться</h3>
+                                <p>${escapeHtml(place.howToGet)}</p>
+                            </div>
+                            ` : ''}
+
+                            <!-- Советы -->
+                            ${place.tips ? `
+                            <div class="place-section place-tips">
+                                <h3>💡 Советы по ловле</h3>
+                                <p>${escapeHtml(place.tips)}</p>
+                            </div>
+                            ` : ''}
+
+                            <a href="places.html" class="back-button">← Все рыбные места</a>
+                        </div>
+                    </div>
+                `;
+
+                // Инициализация карусели
+                if (images.length > 1) {
+                    initCarousel(images.length);
+                }
+
+                // Schema.org для поисковиков
+                const schema = {
+                    "@context": "https://schema.org",
+                    "@type": "TouristAttraction",
+                    "name": place.name,
+                    "description": place.shortDescription || '',
+                    "address": {
+                        "@type": "PostalAddress",
+                        "addressRegion": "Республика Башкортостан",
+                        "addressLocality": place.region || ''
+                    },
+                    "image": `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${place.thumb || 'img/placeholder.jpg'}`
+                };
+                const schemaScript = document.createElement('script');
+                schemaScript.type = 'application/ld+json';
+                schemaScript.textContent = JSON.stringify(schema);
+                document.head.appendChild(schemaScript);
+
+            } catch (error) {
+                console.error('❌ Ошибка:', error);
+                pageContainer.innerHTML = `
+                    <div style="text-align:center;padding:40px;">
+                        <h2>⚠️ Ошибка загрузки</h2>
+                        <p style="color:#7a8a9a;">Пожалуйста, попробуйте позже.</p>
+                        <p style="color:#999;font-size:14px;margin-top:8px;">${error.message}</p>
+                    </div>
+                `;
+            }
+        }
+
+        // ========== ЛОГИКА КАРУСЕЛИ ==========
+        let currentSlide = 0;
+        let totalSlides = 0;
+        let slideInterval = null;
+
+        function initCarousel(count) {
+            totalSlides = count;
+            updateCarousel();
+            slideInterval = setInterval(() => changeSlide(1), 4000);
+            const container = document.getElementById('carouselContainer');
+            if (container) {
+                container.addEventListener('mouseenter', () => clearInterval(slideInterval));
+                container.addEventListener('mouseleave', () => {
+                    slideInterval = setInterval(() => changeSlide(1), 4000);
+                });
+            }
+        }
+
+        function changeSlide(direction) {
+            currentSlide = (currentSlide + direction + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        function updateCarousel() {
+            const slidesContainer = document.getElementById('carouselSlides');
+            const dots = document.querySelectorAll('.carousel-dot');
+            if (slidesContainer) {
+                slidesContainer.style.transform = `translateX(-${currentSlide * 100}%)`;
+            }
+            dots.forEach((dot, idx) => {
+                dot.classList.toggle('active', idx === currentSlide);
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPlacePage);
+    </script>
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+    (function(m,e,t,r,i,k,a){
+        m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+        m[i].l=1*new Date();
+        for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+        k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+    })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=111613780', 'ym');
+
+    ym(111613780, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/111613780" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+</body>
+</html>
