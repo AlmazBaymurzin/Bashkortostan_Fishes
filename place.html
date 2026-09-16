@@ -17,7 +17,7 @@
     <meta property="og:title" content="Рыбное место — Рыбы России и Башкортостана" />
     <meta property="og:description" content="Описание рыбного места: что ловится, как добраться, советы." />
     <meta property="og:url" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/place.html" />
-    <meta property="og:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/places/pavlovskoe1.webp" />
+    <meta property="og:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/promo-fish.jpg" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="ru_RU" />
@@ -26,7 +26,7 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Рыбное место — Рыбы России и Башкортостана" />
     <meta name="twitter:description" content="Описание рыбного места: что ловится, как добраться, советы." />
-    <meta name="twitter:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/places/pavlovskoe1.webp" />
+    <meta name="twitter:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/promo-fish.jpg" />
     
     <!-- Гео-теги -->
     <meta name="geo.region" content="RU-BA" />
@@ -40,6 +40,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
     
     <style>
+        /* ===== ПРОМО-БЛОК С КАРТИНКОЙ ===== */
+        .place-hero {
+            background: linear-gradient(135deg, #0a2e4a 0%, #1a5a7a 50%, #2d7a9a 100%);
+            border-radius: 20px;
+            padding: 28px 36px;
+            margin: 16px 0 24px;
+            color: white;
+            box-shadow: 0 8px 30px rgba(26, 82, 118, 0.25);
+        }
+        .place-hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 30px;
+        }
+        .place-hero-text {
+            flex: 1;
+        }
+        .place-hero-text h2 {
+            font-size: 22px;
+            font-weight: 700;
+            margin: 0 0 8px;
+        }
+        .place-hero-text p {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+            line-height: 1.6;
+        }
+        .place-hero-image {
+            flex-shrink: 0;
+        }
+        .place-hero-image img {
+            width: 120px;
+            height: 120px;
+            object-fit: cover;
+            border-radius: 50%;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+            border: 3px solid rgba(255, 255, 255, 0.3);
+        }
+
         /* ===== ОСНОВНАЯ СЕТКА ===== */
         .place-page {
             background: white;
@@ -49,7 +90,6 @@
             margin-bottom: 32px;
         }
 
-        /* Двухколоночная сетка: слева фото, справа текст */
         .place-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -134,7 +174,6 @@
             background: white;
         }
 
-        /* Быстрая информация под фото */
         .place-quick-info {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -195,12 +234,7 @@
             background: #e8f5e9;
             color: #2e7d32;
         }
-        .place-badge.coords {
-            background: #f0f2f5;
-            color: #4a5a6a;
-        }
 
-        /* Блок "Описание" */
         .place-section {
             margin-bottom: 20px;
         }
@@ -220,7 +254,6 @@
             margin: 0;
         }
 
-        /* Блок "Что ловится" */
         .place-fish-list {
             display: flex;
             flex-wrap: wrap;
@@ -257,7 +290,6 @@
             box-shadow: 0 4px 12px rgba(198, 40, 40, 0.3);
         }
 
-        /* Блок "Как добраться" */
         .place-howto {
             background: #f0f7fc;
             border-radius: 12px;
@@ -268,7 +300,6 @@
             color: #1a5276;
         }
 
-        /* Блок "Советы" */
         .place-tips {
             background: #fef9e7;
             border-radius: 12px;
@@ -279,7 +310,6 @@
             color: #b7950b;
         }
 
-        /* Кнопка "Назад" */
         .back-button {
             display: inline-block;
             padding: 10px 28px;
@@ -306,6 +336,15 @@
             }
             .carousel-container {
                 height: 280px;
+            }
+            .place-hero-content {
+                flex-direction: column;
+                text-align: center;
+                gap: 16px;
+            }
+            .place-hero-image img {
+                width: 90px;
+                height: 90px;
             }
         }
         @media (max-width: 640px) {
@@ -351,6 +390,19 @@
                 <a href="places.html">Рыбные места</a> / 
                 <span id="breadcrumbPlace">Место</span>
             </div>
+
+            <!-- Промо-блок с картинкой -->
+            <section class="place-hero">
+                <div class="place-hero-content">
+                    <div class="place-hero-text">
+                        <h2>🐟 Рыбы Башкортостана</h2>
+                        <p>Полный справочник по рыбам республики: описание, фото, календарь клёва и нереста.</p>
+                    </div>
+                    <div class="place-hero-image">
+                        <img src="img/promo-fish.jpg" alt="Рыбы Башкортостана" loading="lazy" onerror="this.style.display='none'" />
+                    </div>
+                </div>
+            </section>
             
             <div class="place-page" id="placePage">
                 <div style="text-align:center;padding:40px;">⏳ Загрузка данных...</div>
@@ -406,7 +458,6 @@
             }
 
             try {
-                // Загружаем места и рыб параллельно
                 const [placesRes, fishesRes] = await Promise.all([
                     fetch('data/places.json'),
                     fetch('data/fishes.json')
@@ -430,18 +481,15 @@
                     return;
                 }
                 
-                // Карта рыб для быстрого поиска
                 const fishesMap = {};
                 (fishesData.fishes || []).forEach(fish => {
                     fishesMap[fish.id] = fish;
                 });
 
-                // Обновляем заголовок страницы
                 document.title = `${place.name} — рыбалка, что ловится, как добраться`;
                 document.getElementById('pageTitle').textContent = `${place.name} — рыбалка, что ловится, как добраться`;
                 document.getElementById('breadcrumbPlace').textContent = place.name;
 
-                // Обновляем мета-теги
                 const fishNames = (place.fish || []).map(id => fishesMap[id]?.name).filter(Boolean).join(', ');
                 const desc = `${place.name} (${place.region || 'Башкортостан'}) — рыбалка: ${fishNames}. ${place.shortDescription || ''}`;
                 const keywords = `${place.name}, рыбалка, ${place.region || ''}, ${fishNames}, рыбные места башкортостана`;
@@ -457,14 +505,12 @@
                 document.querySelector('meta[name="twitter:description"]').setAttribute('content', desc);
                 document.querySelector('meta[name="twitter:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${place.thumb || 'img/placeholder.jpg'}`);
 
-                // Тип места
                 let typeLabel = 'Место';
                 let typeEmoji = '📍';
                 if (place.type === 'река') { typeLabel = 'Река'; typeEmoji = '🏞'; }
                 else if (place.type === 'озеро') { typeLabel = 'Озеро'; typeEmoji = '💧'; }
                 else if (place.type === 'водохранилище') { typeLabel = 'Водохранилище'; typeEmoji = '🌊'; }
 
-                // Карусель
                 let carouselHTML = '';
                 const images = place.images && place.images.length > 0 ? place.images : [place.thumb || 'img/placeholder.jpg'];
                 
@@ -493,7 +539,6 @@
                     `;
                 }
 
-                // Список рыб (кликабельные ссылки)
                 let fishListHTML = '';
                 if (place.fish && place.fish.length > 0) {
                     fishListHTML = place.fish.map(fishId => {
@@ -511,10 +556,8 @@
                     fishListHTML = '<p style="color:#7a8a9a;font-size:14px;">Информация уточняется</p>';
                 }
 
-                // Собираем страницу
                 pageContainer.innerHTML = `
                     <div class="place-layout">
-                        <!-- ЛЕВАЯ КОЛОНКА: ФОТО -->
                         <div class="place-photo-section">
                             ${carouselHTML}
                             
@@ -536,7 +579,6 @@
                             </div>
                         </div>
 
-                        <!-- ПРАВАЯ КОЛОНКА: ТЕКСТ -->
                         <div class="place-info-section">
                             <h1 class="place-page-name">${escapeHtml(place.name)}</h1>
                             
@@ -545,13 +587,11 @@
                                 <span class="place-badge region">📍 ${escapeHtml(place.region || 'Башкортостан')}</span>
                             </div>
 
-                            <!-- Описание -->
                             <div class="place-section">
                                 <h3>📝 Описание</h3>
                                 <p>${escapeHtml(place.fullDescription || place.shortDescription || 'Описание уточняется.')}</p>
                             </div>
 
-                            <!-- Что ловится -->
                             <div class="place-section">
                                 <h3>🐟 Какие рыбы водятся</h3>
                                 <div class="place-fish-list">
@@ -559,7 +599,6 @@
                                 </div>
                             </div>
 
-                            <!-- Как добраться -->
                             ${place.howToGet ? `
                             <div class="place-section place-howto">
                                 <h3>🚗 Как добраться</h3>
@@ -567,7 +606,6 @@
                             </div>
                             ` : ''}
 
-                            <!-- Советы -->
                             ${place.tips ? `
                             <div class="place-section place-tips">
                                 <h3>💡 Советы по ловле</h3>
@@ -580,12 +618,10 @@
                     </div>
                 `;
 
-                // Инициализация карусели
                 if (images.length > 1) {
                     initCarousel(images.length);
                 }
 
-                // Schema.org для поисковиков
                 const schema = {
                     "@context": "https://schema.org",
                     "@type": "TouristAttraction",
@@ -615,7 +651,6 @@
             }
         }
 
-        // ========== ЛОГИКА КАРУСЕЛИ ==========
         let currentSlide = 0;
         let totalSlides = 0;
         let slideInterval = null;
