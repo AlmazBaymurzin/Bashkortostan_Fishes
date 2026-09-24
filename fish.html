@@ -6,7 +6,7 @@
     <title id="pageTitle">Рыбы России и Башкортостана</title>
     <link rel="icon" href="img/icons/favicon.png" type="image/png" />
     
-    <!-- SEO Мета-теги (расширенные, обновляются динамически) -->
+    <!-- SEO Мета-теги (обновляются динамически) -->
     <meta name="description" content="Описание рыбы, места обитания, размеры, интересные факты, календарь клёва и нереста. Вся информация о рыбе из России и Башкортостана." />
     <meta name="keywords" content="рыбы россии, рыбы башкортостана, рыбалка, виды рыб, рыбная карта, красная книга рыб, календарь клёва, нерест, интересные факты о рыбах" />
     <meta name="author" content="Рыбы России и Башкортостана" />
@@ -16,8 +16,8 @@
     <meta property="og:type" content="article" />
     <meta property="og:title" content="Рыбы России и Башкортостана" />
     <meta property="og:description" content="Описание рыбы, места обитания, размеры, интересные факты, календарь клёва и нереста." />
-    <meta property="og:url" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html" />
-    <meta property="og:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/thumb/shchuka.webp" />
+    <meta property="og:url" content="https://www.bashrybka.ru/fish.html" />
+    <meta property="og:image" content="https://www.bashrybka.ru/img/thumb/shchuka.webp" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
     <meta property="og:locale" content="ru_RU" />
@@ -26,18 +26,19 @@
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content="Рыбы России и Башкортостана" />
     <meta name="twitter:description" content="Описание рыбы, места обитания, размеры, интересные факты, календарь клёва и нереста." />
-    <meta name="twitter:image" content="https://almazbaymurzin.github.io/Bashkortostan_Fishes/img/thumb/shchuka.webp" />
+    <meta name="twitter:image" content="https://www.bashrybka.ru/img/thumb/shchuka.webp" />
     
-    <!-- Гео-теги (локальное SEO для Башкортостана) -->
+    <!-- Гео-теги -->
     <meta name="geo.region" content="RU-BA" />
     <meta name="geo.placename" content="Уфа, Башкортостан, Россия" />
     
-    <!-- Дополнительные SEO-теги -->
-    <link rel="canonical" href="https://almazbaymurzin.github.io/Bashkortostan_Fishes/fish.html" />
+    <!-- Canonical -->
+    <link rel="canonical" href="https://www.bashrybka.ru/fish.html" />
     <meta name="theme-color" content="#1a5276" />
     
     <link rel="stylesheet" href="css/style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet" />
+    
     <style>
         /* Стили для карусели */
         .carousel-container {
@@ -283,10 +284,70 @@
         .calendar-legend .dot.green { background: #2e7d32; }
         .calendar-legend .dot.red { background: #c62828; }
         .calendar-legend .dot.gray { background: #f0f2f5; border: 1px solid #e0e4e8; }
+
+        /* ===== БЛОК "ГДЕ ЛОВИТЬ" ===== */
+        .fish-places {
+            background: #f0f7fc;
+            border-radius: 16px;
+            padding: 20px 24px;
+            margin-top: 20px;
+            border: 1px solid #d4e0ff;
+        }
+        .fish-places h3 {
+            font-size: 18px;
+            font-weight: 700;
+            color: #0a2e4a;
+            margin: 0 0 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .fish-places-list {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+        .place-link {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 16px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid #d4e0ff;
+            text-decoration: none;
+            color: #1a1a1a;
+            transition: all 0.25s ease;
+        }
+        .place-link:hover {
+            background: #1a5276;
+            color: white;
+            transform: translateX(4px);
+            box-shadow: 0 4px 12px rgba(26, 82, 118, 0.25);
+        }
+        .place-link-emoji {
+            font-size: 20px;
+            flex-shrink: 0;
+        }
+        .place-link-name {
+            flex: 1;
+            font-size: 15px;
+            font-weight: 600;
+        }
+        .place-link-region {
+            font-size: 12px;
+            opacity: 0.7;
+        }
+        .place-link-arrow {
+            font-size: 18px;
+            opacity: 0.5;
+            transition: transform 0.25s ease;
+        }
+        .place-link:hover .place-link-arrow {
+            transform: translateX(4px);
+            opacity: 1;
+        }
     </style>
-<!-- Yandex Autoplacement 20065535 -->
-<script src="https://yandex.ru/ads/system/context.js" async></script>
-<script data-page-id="20065535" src="https://yandex.ru/ads/system/ap-loader.js" async></script>
 </head>
 <body>
     <header class="header">
@@ -322,6 +383,7 @@
                     <p class="footer-small">Данные основаны на открытых источниках и Красной книге Республики Башкортостан</p>
                 </div>
                 <div class="footer-links">
+                    <a href="places.html">📍 Рыбные места</a>
                     <a href="contacts.html">Контакты</a>
                     <a href="privacy.html">Политика конфиденциальности</a>
                     <a href="about.html">О проекте</a>
@@ -334,7 +396,7 @@
     <script>
         function escapeHtml(str) {
             if (!str) return '';
-            return str.replace(/[&<>]/g, function(m) {
+            return String(str).replace(/[&<>]/g, function(m) {
                 if (m === '&') return '&amp;';
                 if (m === '<') return '&lt;';
                 if (m === '>') return '&gt;';
@@ -364,10 +426,19 @@
             }
 
             try {
-                const response = await fetch('data/fishes.json');
-                if (!response.ok) throw new Error(`Ошибка загрузки: ${response.status}`);
-                const data = await response.json();
-                const fish = data.fishes.find(f => f.id === fishId);
+                const [fishRes, placesRes] = await Promise.all([
+                    fetch('data/fishes.json'),
+                    fetch('data/places.json')
+                ]);
+                
+                if (!fishRes.ok) throw new Error(`Ошибка загрузки рыб: ${fishRes.status}`);
+                if (!placesRes.ok) throw new Error(`Ошибка загрузки мест: ${placesRes.status}`);
+                
+                const fishData = await fishRes.json();
+                const placesData = await placesRes.json();
+                
+                const fish = fishData.fishes.find(f => f.id === fishId);
+                const places = placesData.places || [];
 
                 if (!fish) {
                     pageContainer.innerHTML = `
@@ -379,33 +450,33 @@
                     return;
                 }
 
-                // Обновляем мета-теги динамически под конкретную рыбу
-                document.title = `${fish.name} — Рыбы России и Башкортостана`;
-                document.getElementById('pageTitle').textContent = `${fish.name} — Рыбы России и Башкортостана`;
-                document.getElementById('breadcrumbFish').textContent = fish.name;
-
-                // Расширенный description с учётом рыбы
+                // ===== ДИНАМИЧЕСКИЕ МЕТА-ТЕГИ =====
                 const fishName = fish.name || 'Рыба';
                 const fishFamily = fish.family || '';
                 const fishHabitat = Array.isArray(fish.habitat) ? fish.habitat.join(', ') : 'различные водоемы';
                 const fishSize = fish.size || 'различные размеры';
                 const fishWeight = fish.weight || 'различный вес';
                 
-                const desc = `${fishName} (${fish.latin || ''}) — описание, фото, места обитания (${fishHabitat}), размеры (${fishSize}), вес (${fishWeight}), интересные факты, календарь клёва и нереста. Рыбы России и Башкортостана.`;
-                const keywords = `${fishName}, ${fish.latin || ''}, ${fishFamily}, рыбы россии, рыбы башкортостана, рыбалка, ${fishHabitat}, календарь клёва, нерест, интересные факты, ${fish.status || ''}`;
+                // Title — ключевой запрос + польза
+                const newTitle = `${fishName} в Башкирии: где ловить, на что клюёт, размеры и фото`;
+                document.title = newTitle;
+                document.getElementById('pageTitle').textContent = newTitle;
+                document.getElementById('breadcrumbFish').textContent = fishName;
                 
-                document.querySelector('meta[name="description"]').setAttribute('content', desc);
-                document.querySelector('meta[name="keywords"]').setAttribute('content', keywords);
+                // Description — конкретика + ключевые слова
+                const newDesc = `${fishName} в Башкортостане: описание, фото, места обитания (${fishHabitat}), размеры (${fishSize}), вес (${fishWeight}). Календарь клёва и нереста, снасти, советы.`;
+                const newKeywords = `${fishName}, ${fish.latin || ''}, ${fishFamily}, рыбы россии, рыбы башкортостана, рыбалка, ${fishHabitat}, календарь клёва, нерест, интересные факты`;
                 
-                // Open Graph
-                document.querySelector('meta[property="og:title"]').setAttribute('content', `${fishName} — Рыбы России и Башкортостана`);
-                document.querySelector('meta[property="og:description"]').setAttribute('content', desc);
-                document.querySelector('meta[property="og:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${fish.thumb || 'img/placeholder.jpg'}`);
-                
-                // Twitter
-                document.querySelector('meta[name="twitter:title"]').setAttribute('content', `${fishName} — Рыбы России и Башкортостана`);
-                document.querySelector('meta[name="twitter:description"]').setAttribute('content', desc);
-                document.querySelector('meta[name="twitter:image"]').setAttribute('content', `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${fish.thumb || 'img/placeholder.jpg'}`);
+                document.querySelector('meta[name="description"]').setAttribute('content', newDesc);
+                document.querySelector('meta[name="keywords"]').setAttribute('content', newKeywords);
+                document.querySelector('meta[property="og:title"]').setAttribute('content', newTitle);
+                document.querySelector('meta[property="og:description"]').setAttribute('content', newDesc);
+                document.querySelector('meta[property="og:image"]').setAttribute('content', `https://www.bashrybka.ru/${fish.thumb || 'img/placeholder.jpg'}`);
+                document.querySelector('meta[property="og:url"]').setAttribute('content', `https://www.bashrybka.ru/fish.html?id=${fish.id}`);
+                document.querySelector('meta[name="twitter:title"]').setAttribute('content', newTitle);
+                document.querySelector('meta[name="twitter:description"]').setAttribute('content', newDesc);
+                document.querySelector('meta[name="twitter:image"]').setAttribute('content', `https://www.bashrybka.ru/${fish.thumb || 'img/placeholder.jpg'}`);
+                document.querySelector('link[rel="canonical"]').setAttribute('href', `https://www.bashrybka.ru/fish.html?id=${fish.id}`);
 
                 let statusLabel = fish.status || 'Промысловая';
                 let statusClass = 'tag-promyslovaya';
@@ -414,7 +485,7 @@
                     statusLabel = 'Красная книга ⚠️';
                 }
 
-                // Формируем HTML для карусели
+                // Карусель
                 let carouselHTML = '';
                 const images = fish.images && fish.images.length > 0 ? fish.images : [fish.thumb || 'img/placeholder.jpg'];
                 
@@ -443,7 +514,7 @@
                     `;
                 }
 
-                // ===== ГЕНЕРАЦИЯ КАЛЕНДАРЕЙ =====
+                // Календари
                 function renderCalendar(dataArray, className) {
                     if (!dataArray || dataArray.length !== 12) return '<div style="color:#999;font-size:13px;">Данные не указаны</div>';
                     return `
@@ -458,7 +529,7 @@
                     `;
                 }
 
-                // ===== ГЕНЕРАЦИЯ БЛОКА "РЫБАЦКИЕ СЕКРЕТЫ" =====
+                // Секреты
                 function renderSecrets(fish) {
                     if (!fish.bait && !fish.lure && !fish.tackle && !fish.technique && !fish.tips) return '';
                     
@@ -515,7 +586,7 @@
                     return secretsHTML;
                 }
 
-                // ===== ГЕНЕРАЦИЯ FAQ =====
+                // FAQ
                 function renderFaq(fish) {
                     let faqItems = [];
                     
@@ -567,25 +638,134 @@
                     `;
                 }
 
-                // ===== СХЕМА.ORG (структурированные данные) =====
-                function renderSchemaOrg(fish) {
-                    const schema = {
+                // ===== НОВЫЙ БЛОК «ГДЕ ЛОВИТЬ» (ПЕРЕЛИНКОВКА) =====
+                function renderPlaces(fish, places) {
+                    // Находим все места, где водится эта рыба
+                    const matchingPlaces = places.filter(place => 
+                        place.fish && place.fish.includes(fish.id)
+                    );
+                    
+                    if (matchingPlaces.length === 0) return '';
+                    
+                    return `
+                        <div class="fish-places">
+                            <h3>📍 Где ловить ${escapeHtml(fish.name)} в Башкортостане</h3>
+                            <div class="fish-places-list">
+                                ${matchingPlaces.map(place => {
+                                    let typeEmoji = '📍';
+                                    if (place.type === 'река') typeEmoji = '🏞';
+                                    else if (place.type === 'озеро') typeEmoji = '💧';
+                                    else if (place.type === 'водохранилище') typeEmoji = '🌊';
+                                    
+                                    return `
+                                        <a href="place.html?id=${place.id}" class="place-link">
+                                            <span class="place-link-emoji">${typeEmoji}</span>
+                                            <span class="place-link-name">${escapeHtml(place.name)}</span>
+                                            <span class="place-link-region">${escapeHtml(place.region || '')}</span>
+                                            <span class="place-link-arrow">→</span>
+                                        </a>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `;
+                }
+
+                // ===== SCHEMA.ORG =====
+                function renderSchemaOrg(fish, places) {
+                    // Article
+                    const articleSchema = {
                         "@context": "https://schema.org",
                         "@type": "Article",
-                        "headline": `${fish.name} — Рыбы России и Башкортостана`,
-                        "description": `Описание рыбы ${fish.name}: места обитания, размеры, интересные факты, календарь клёва и нереста.`,
-                        "image": `https://almazbaymurzin.github.io/Bashkortostan_Fishes/${fish.thumb || 'img/placeholder.jpg'}`,
+                        "headline": `${fishName} в Башкирии: где ловить, на что клюёт, размеры и фото`,
+                        "description": newDesc,
+                        "image": `https://www.bashrybka.ru/${fish.thumb || 'img/placeholder.jpg'}`,
                         "author": {
-                            "@type": "Person",
+                            "@type": "Organization",
                             "name": "Рыбы Башкортостана"
                         },
                         "publisher": {
                             "@type": "Organization",
-                            "name": "Рыбы Башкортостана"
+                            "name": "Рыбы Башкортостана",
+                            "logo": {
+                                "@type": "ImageObject",
+                                "url": "https://www.bashrybka.ru/img/icons/logo.png"
+                            }
+                        },
+                        "mainEntityOfPage": {
+                            "@type": "WebPage",
+                            "@id": `https://www.bashrybka.ru/fish.html?id=${fish.id}`
                         }
                     };
                     
-                    return `<script type="application/ld+json">${JSON.stringify(schema)}<\/script>`;
+                    // BreadcrumbList
+                    const breadcrumbSchema = {
+                        "@context": "https://schema.org",
+                        "@type": "BreadcrumbList",
+                        "itemListElement": [
+                            {
+                                "@type": "ListItem",
+                                "position": 1,
+                                "name": "Главная",
+                                "item": "https://www.bashrybka.ru/"
+                            },
+                            {
+                                "@type": "ListItem",
+                                "position": 2,
+                                "name": fish.name,
+                                "item": `https://www.bashrybka.ru/fish.html?id=${fish.id}`
+                            }
+                        ]
+                    };
+                    
+                    // FAQPage
+                    let faqSchema = null;
+                    let faqItems = [];
+                    if (fish.habitat && fish.habitat.length > 0) {
+                        faqItems.push({
+                            q: `Где водится ${fish.name}?`,
+                            a: `${fish.name} встречается в водоёмах: ${fish.habitat.join(', ')}.`
+                        });
+                    }
+                    if (fish.status && fish.status.includes('краснокнижная')) {
+                        faqItems.push({
+                            q: `${fish.name} в Красной книге?`,
+                            a: `Да, ${fish.name} занесена в Красную книгу Республики Башкортостан. Ловля запрещена!`
+                        });
+                    } else if (fish.status && fish.status.includes('промысловая')) {
+                        faqItems.push({
+                            q: `${fish.name} в Красной книге?`,
+                            a: `Нет, ${fish.name} не занесена в Красную книгу. Это промысловая рыба.`
+                        });
+                    }
+                    if (fish.spawning) {
+                        faqItems.push({
+                            q: `Когда нерестится ${fish.name}?`,
+                            a: `Нерест ${fish.name} происходит: ${fish.spawning}.`
+                        });
+                    }
+                    
+                    if (faqItems.length > 0) {
+                        faqSchema = {
+                            "@context": "https://schema.org",
+                            "@type": "FAQPage",
+                            "mainEntity": faqItems.map(item => ({
+                                "@type": "Question",
+                                "name": item.q,
+                                "acceptedAnswer": {
+                                    "@type": "Answer",
+                                    "text": item.a
+                                }
+                            }))
+                        };
+                    }
+                    
+                    let schemas = [articleSchema, breadcrumbSchema];
+                    if (faqSchema) schemas.push(faqSchema);
+                    
+                    return schemas.map(schema => 
+                        `<script type="application/ld+json">${JSON.stringify(schema)}<\/script>`
+                    ).join('');
                 }
 
                 // Собираем страницу
@@ -606,11 +786,8 @@
                                 <div class="spec-item"><span class="spec-label">Вес</span><span class="spec-value">${fish.weight || '—'}</span></div>
                                 <div class="spec-item"><span class="spec-label">Тип питания</span><span class="spec-value">${fish.diet || '—'}</span></div>
                                 <div class="spec-item"><span class="spec-label">Места обитания</span><span class="spec-value">${Array.isArray(fish.habitat) ? fish.habitat.join(', ') : '—'}</span></div>
-                                ${fish.max_length ? `<div class="spec-item"><span class="spec-label">Макс. длина</span><span class="spec-value">${fish.max_length}</span></div>` : ''}
-                                ${fish.max_weight ? `<div class="spec-item"><span class="spec-label">Макс. вес</span><span class="spec-value">${fish.max_weight}</span></div>` : ''}
                             </div>
 
-                            <!-- ===== КАЛЕНДАРИ ===== -->
                             <div class="fish-calendars">
                                 <div class="fish-calendar-block">
                                     <h4>🎣 Когда ловится</h4>
@@ -630,10 +807,7 @@
                                 </div>
                             </div>
 
-                            <!-- ===== РЫБАЦКИЕ СЕКРЕТЫ ===== -->
                             ${renderSecrets(fish)}
-
-                            <!-- ===== FAQ ===== -->
                             ${renderFaq(fish)}
                         </div>
                     </div>
@@ -647,7 +821,11 @@
                     </div>
                     ` : ''}
 
-                    ${renderSchemaOrg(fish)}
+                    <!-- ✅ НОВЫЙ БЛОК «ГДЕ ЛОВИТЬ» -->
+                    ${renderPlaces(fish, places)}
+
+                    <!-- ✅ SCHEMA.ORG -->
+                    ${renderSchemaOrg(fish, places)}
 
                     <div style="margin-top:24px;">
                         <a href="index.html" style="display:inline-block;padding:10px 28px;background:#f0f2f5;border-radius:30px;color:#1a1a1a;font-weight:600;text-decoration:none;transition:background 0.2s;" 
@@ -658,7 +836,6 @@
                     </div>
                 `;
 
-                // Инициализация карусели
                 if (images.length > 1) {
                     initCarousel(images.length);
                 }
