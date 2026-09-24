@@ -116,6 +116,62 @@ img {
 }
 
 /* ========================================
+   🆕 ПЕРЕКЛЮЧАТЕЛЬ РЫБЫ / МЕСТА (СО СДВИГОМ)
+   ======================================== */
+.view-switcher-slider {
+    position: relative;
+    display: flex;
+    background: #f0f2f5;
+    padding: 4px;
+    border-radius: 30px;
+    margin: 0 auto;
+    flex-shrink: 0;
+}
+
+.view-slider-bg {
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: calc(50% - 4px);
+    height: calc(100% - 8px);
+    background: #1a5276;
+    border-radius: 26px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 2px 8px rgba(26, 82, 118, 0.3);
+    z-index: 0;
+}
+
+.view-switcher-slider[data-active="places"] .view-slider-bg {
+    transform: translateX(100%);
+}
+
+.view-btn-slider {
+    position: relative;
+    z-index: 1;
+    flex: 1;
+    padding: 8px 22px;
+    border-radius: 26px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5a6a;
+    text-decoration: none;
+    transition: color 0.25s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    white-space: nowrap;
+}
+
+.view-btn-slider.active {
+    color: white;
+}
+
+.view-btn-slider:hover:not(.active) {
+    color: #1a5276;
+}
+
+/* ========================================
    ПРОМО-БАННЕР
    ======================================== */
 .promo-banner {
@@ -857,6 +913,17 @@ img {
     }
     .fish-page-specs {
         grid-template-columns: 1fr;
+    }
+    
+    /* Переключатель на планшетах */
+    .view-switcher-slider {
+        order: 3;
+        width: 100%;
+        margin-top: 8px;
+    }
+    .view-btn-slider {
+        padding: 8px 14px;
+        font-size: 13px;
     }
 }
 
