@@ -486,10 +486,11 @@
                     fishesMap[fish.id] = fish;
                 });
 
-                // ===== ДИНАМИЧЕСКИЕ МЕТА-ТЕГИ =====
+                // ===== ДИНАМИЧЕСКИЕ МЕТА-ТЕГИ (УЛУЧШЕННЫЕ) =====
                 const fishNames = (place.fish || []).map(id => fishesMap[id]?.name).filter(Boolean).join(', ');
-                const newTitle = `${place.name}: рыбалка, что ловится, как добраться`;
-                const newDesc = `${place.name} (${place.region || 'Башкортостан'}) — рыбалка: ${fishNames}. ${place.shortDescription || ''} Как добраться, советы, координаты.`;
+                const fishCount = (place.fish || []).length;
+                const newTitle = `${place.name}: рыбалка, ${fishCount} видов рыб, как добраться`;
+                const newDesc = `${place.name} (${place.region || 'Башкортостан'}) — рыбалка на ${fishNames}. Как добраться, советы, координаты. ${place.shortDescription || ''}`;
                 const newKeywords = `${place.name}, рыбалка, ${place.region || ''}, ${fishNames}, рыбные места башкортостана, куда поехать на рыбалку`;
                 
                 document.title = newTitle;
@@ -560,7 +561,6 @@
 
                 // ===== SCHEMA.ORG =====
                 function renderSchemaOrg(place, fishesMap) {
-                    // TouristAttraction
                     const coords = place.coordinates ? place.coordinates.split(',').map(c => c.trim()) : null;
                     const touristSchema = {
                         "@context": "https://schema.org",
@@ -576,7 +576,6 @@
                         "url": `https://www.bashrybka.ru/place.html?id=${place.id}`
                     };
                     
-                    // Добавляем гео-координаты, если есть
                     if (coords && coords.length === 2) {
                         touristSchema.geo = {
                             "@type": "GeoCoordinates",
@@ -585,7 +584,6 @@
                         };
                     }
                     
-                    // BreadcrumbList
                     const breadcrumbSchema = {
                         "@context": "https://schema.org",
                         "@type": "BreadcrumbList",
@@ -750,7 +748,7 @@
 
     ym(111613780, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/111613780" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/111613780" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </body>
 </html>
