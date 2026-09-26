@@ -406,6 +406,12 @@
 
         const MONTHS_SHORT = ['янв', 'фев', 'мар', 'апр', 'май', 'июн', 'июл', 'авг', 'сен', 'окт', 'ноя', 'дек'];
 
+        function getPluralPlaces(n) {
+            if (n % 10 === 1 && n % 100 !== 11) return 'место';
+            if (n % 10 >= 2 && n % 10 <= 4 && (n % 100 < 10 || n % 100 >= 20)) return 'места';
+            return 'мест';
+        }
+
         function getFishId() {
             const params = new URLSearchParams(window.location.search);
             return params.get('id');
@@ -450,21 +456,25 @@
                     return;
                 }
 
-                // ===== ДИНАМИЧЕСКИЕ МЕТА-ТЕГИ =====
+                // ===== ДИНАМИЧЕСКИЕ МЕТА-ТЕГИ (УЛУЧШЕННЫЕ) =====
                 const fishName = fish.name || 'Рыба';
                 const fishFamily = fish.family || '';
                 const fishHabitat = Array.isArray(fish.habitat) ? fish.habitat.join(', ') : 'различные водоемы';
                 const fishSize = fish.size || 'различные размеры';
                 const fishWeight = fish.weight || 'различный вес';
                 
-                // Title — ключевой запрос + польза
-                const newTitle = `${fishName} в Башкирии: где ловить, на что клюёт, размеры и фото`;
+                // Считаем количество мест, где водится эта рыба
+                const matchingPlacesCount = places.filter(p => p.fish && p.fish.includes(fish.id)).length;
+                const placesText = matchingPlacesCount > 0 ? ` (${matchingPlacesCount} ${getPluralPlaces(matchingPlacesCount)})` : '';
+                
+                // Title — ключевой запрос + цифры + польза
+                const newTitle = `${fishName} в Башкирии: где ловить${placesText}, на что клюёт, фото`;
                 document.title = newTitle;
                 document.getElementById('pageTitle').textContent = newTitle;
                 document.getElementById('breadcrumbFish').textContent = fishName;
                 
-                // Description — конкретика + ключевые слова
-                const newDesc = `${fishName} в Башкортостане: описание, фото, места обитания (${fishHabitat}), размеры (${fishSize}), вес (${fishWeight}). Календарь клёва и нереста, снасти, советы.`;
+                // Description — конкретика: места, размеры, вес, календарь
+                const newDesc = `${fishName} в Башкортостане: ${matchingPlacesCount > 0 ? matchingPlacesCount + ' ' + getPluralPlaces(matchingPlacesCount) + ' обитания' : 'места обитания'}, размеры ${fishSize}, вес ${fishWeight}. Календарь клёва и нереста, снасти, советы рыбакам.`;
                 const newKeywords = `${fishName}, ${fish.latin || ''}, ${fishFamily}, рыбы россии, рыбы башкортостана, рыбалка, ${fishHabitat}, календарь клёва, нерест, интересные факты`;
                 
                 document.querySelector('meta[name="description"]').setAttribute('content', newDesc);
@@ -638,9 +648,8 @@
                     `;
                 }
 
-                // ===== НОВЫЙ БЛОК «ГДЕ ЛОВИТЬ» (ПЕРЕЛИНКОВКА) =====
+                // ===== БЛОК «ГДЕ ЛОВИТЬ» (ПЕРЕЛИНКОВКА) =====
                 function renderPlaces(fish, places) {
-                    // Находим все места, где водится эта рыба
                     const matchingPlaces = places.filter(place => 
                         place.fish && place.fish.includes(fish.id)
                     );
@@ -673,11 +682,10 @@
 
                 // ===== SCHEMA.ORG =====
                 function renderSchemaOrg(fish, places) {
-                    // Article
                     const articleSchema = {
                         "@context": "https://schema.org",
                         "@type": "Article",
-                        "headline": `${fishName} в Башкирии: где ловить, на что клюёт, размеры и фото`,
+                        "headline": newTitle,
                         "description": newDesc,
                         "image": `https://www.bashrybka.ru/${fish.thumb || 'img/placeholder.jpg'}`,
                         "author": {
@@ -698,7 +706,6 @@
                         }
                     };
                     
-                    // BreadcrumbList
                     const breadcrumbSchema = {
                         "@context": "https://schema.org",
                         "@type": "BreadcrumbList",
@@ -718,7 +725,6 @@
                         ]
                     };
                     
-                    // FAQPage
                     let faqSchema = null;
                     let faqItems = [];
                     if (fish.habitat && fish.habitat.length > 0) {
@@ -904,7 +910,7 @@
 
     ym(111613780, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
 </script>
-<noscript><div><img src="https://mc.yandex.ru/watch/111613780" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<noscript><div><img src="https://mc.yandex.ru/watch/111613780" style="position:absolute;left:-9999px;" alt="" /></div></noscript>
 <!-- /Yandex.Metrika counter -->
 </body>
 </html>
